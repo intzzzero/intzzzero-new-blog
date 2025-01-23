@@ -9,13 +9,13 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `Text Based Blog`,
+    title: `INTZZZERO`,
     author: {
-      name: `Your Name`,
+      name: `intzzzero`,
       summary: `who writes about various things`,
     },
-    description: `A simple text-based blog.`,
-    siteUrl: `https://your-site-url.com`,
+    description: `intzzzero's new blog`,
+    siteUrl: `https://intzzzero.netlify.app`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
