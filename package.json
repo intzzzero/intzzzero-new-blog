@@ -1,12 +1,9 @@
 {
   "name": "text-based-blog",
   "private": true,
-  "description": "A simple text-based blog powered by Gatsby",
+  "description": "intzzzero's new blog",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
-  },
+  "author": "intzzzero",
   "dependencies": {
     "gatsby": "^5.5.0",
     "gatsby-plugin-feed": "^5.5.0",
@@ -23,14 +20,13 @@
   "devDependencies": {
     "prettier": "^2.8.3"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
     "gatsby"
   ],
-  "license": "0BSD",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "https://github.com/intzzzero/intzzzero-new-blog.git"
   },
   "scripts": {
     "build": "gatsby build",
