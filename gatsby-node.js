@@ -46,15 +46,6 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
   });
-
-  // Create random post page
-  createPage({
-    path: "/random",
-    component: require.resolve("./src/templates/random-post.js"),
-    context: {
-      slugs: posts.map(post => post.fields.slug),
-    },
-  });
 };
 
 /**
