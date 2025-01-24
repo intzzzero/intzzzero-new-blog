@@ -40,13 +40,21 @@ const AboutPage = () => {
             <div style={{ fontSize: "0.9rem", lineHeight: "1" }}>
               <p style={{ marginBottom: "0.5rem" }}>
                 Github.{" "}
-                <a href="https://github.com/intzzzero" target="_blank">
+                <a
+                  href="https://github.com/intzzzero"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   intzzzero
                 </a>
               </p>
               <p style={{ marginBottom: "0.5rem" }}>
                 Instagram.{" "}
-                <a href="https://www.instagram.com/intzzzero/" target="_blank">
+                <a
+                  href="https://www.instagram.com/intzzzero/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   @intzzzero
                 </a>
               </p>
