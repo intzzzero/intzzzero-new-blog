@@ -24,12 +24,11 @@ const AboutPage = () => {
         <article>
           <section style={{ marginBottom: "4rem" }}>
             <h3 style={{ marginBottom: "2rem" }}>About Me</h3>
-            <div style={{ fontSize: "0.9rem", lineHeight: "0.5" }}>
-              <p>독서보다는 도서수집을 좋아하며 수집한 책 중 골라 읽습니다.</p>
-              <p style={{ marginTop: "0.3rem" }}>
-                분야를 막론하고 새로운 것에 흥미를 느낍니다.
-              </p>
-              <p style={{ marginTop: "0.3rem" }}>
+            <div style={{ fontSize: "0.9rem", lineHeight: "3" }}>
+              <p>
+                독서보다는 도서수집을 좋아하며 수집한 책 중 골라 읽습니다.
+                <br />
+                분야를 막론하고 새로운 것에 흥미를 느낍니다. <br />
                 디테일한 계획보다는 리소스와 목표만 주어지는 것을 좋아합니다.
               </p>
             </div>
