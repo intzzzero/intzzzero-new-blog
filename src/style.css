@@ -239,9 +239,10 @@ a:focus {
 /* Custom classes */
 
 .global-wrapper {
-  margin: var(--spacing-0) auto;
+  margin: var(--spacing-5) auto;
   max-width: var(--maxWidth-wrapper);
   padding: var(--spacing-10) var(--spacing-5);
+  border: 1px solid #0000be;
 }
 
 .global-wrapper[data-is-root-path="true"] .bio {
@@ -328,4 +329,55 @@ a:focus {
   ol {
     list-style-position: inside;
   }
+}
+
+input {
+  font-family: var(--font-body);
+}
+
+input:focus {
+  outline: 2px solid var(--color-primary);
+  border-color: transparent;
+}
+
+.post-item {
+  padding: 1rem;
+  margin: -1rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.post-item:hover {
+  background-color: #f5f5f5;
+}
+
+.show-all-button {
+  background: none;
+  border: 1px solid #0000be;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  color: #0000be;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.show-all-button:hover {
+  background-color: rgba(71, 71, 255, 0.154);
+  color: white;
+}
+
+.nav-button {
+  color: #0000be;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+  border: 1px solid #0000be;
+  border-bottom: none;
+  background: none;
+}
+
+.nav-button:hover {
+  background-color: rgba(0, 0, 238, 0.1);
 }

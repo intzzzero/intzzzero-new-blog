@@ -13,24 +13,14 @@ const blogPost = path.resolve(`./src/templates/blog-post.js`);
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
-exports.createPages = async ({ graphql, actions, reporter }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
   const result = await graphql(`
     {
-      allMarkdownRemark(
-        sort: [
-          { frontmatter: { update: DESC } }
-          { frontmatter: { date: DESC } }
-        ]
-      ) {
+      allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
         nodes {
           id
-          frontmatter {
-            date
-            update
-            category
-          }
           fields {
             slug
           }
@@ -40,33 +30,31 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   `);
 
   if (result.errors) {
-    reporter.panicOnBuild(
-      `There was an error loading your blog posts`,
-      result.errors
-    );
-    return;
+    throw result.errors;
   }
-
-  const posts = result.data.allMarkdownRemark.nodes;
 
   // Create blog posts pages
-  // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
-  // `context` is available in the template as a prop and as a variable in GraphQL
+  const posts = result.data.allMarkdownRemark.nodes;
 
-  if (posts.length > 0) {
-    posts.forEach(post => {
-      createPage({
-        path: post.fields.slug,
-        component: blogPost,
-        context: {
-          id: post.id,
-          category: post.frontmatter.category,
-          update: post.frontmatter.update,
-          date: post.frontmatter.date,
-        },
-      });
+  // Create blog post pages
+  posts.forEach((post, index) => {
+    createPage({
+      path: post.fields.slug,
+      component: require.resolve("./src/templates/blog-post.js"),
+      context: {
+        id: post.id,
+      },
     });
-  }
+  });
+
+  // Create random post page
+  createPage({
+    path: "/random",
+    component: require.resolve("./src/templates/random-post.js"),
+    context: {
+      slugs: posts.map(post => post.fields.slug),
+    },
+  });
 };
 
 /**
