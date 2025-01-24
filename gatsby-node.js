@@ -18,9 +18,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const result = await graphql(`
     {
-      allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+      allMarkdownRemark(sort: { frontmatter: { update: DESC } }) {
         nodes {
           id
+          frontmatter {
+            date
+            update
+            category
+          }
           fields {
             slug
           }
@@ -50,6 +55,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         component: blogPost,
         context: {
           id: post.id,
+          category: post.frontmatter.category,
+          update: post.frontmatter.update,
+          date: post.frontmatter.date,
         },
       });
     });
@@ -108,8 +116,9 @@ exports.createSchemaCustomization = ({ actions }) => {
 
     type Frontmatter {
       title: String
-      description: String
       date: Date @dateformat
+      update: Date @dateformat
+      category: String
     }
 
     type Fields {

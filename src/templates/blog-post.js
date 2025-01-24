@@ -9,6 +9,7 @@ const BlogPostTemplate = ({
   location,
 }) => {
   const siteTitle = site.siteMetadata?.title || `Title`;
+  console.log(post);
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -19,7 +20,17 @@ const BlogPostTemplate = ({
       >
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
-          <p>{post.frontmatter.date}</p>
+          <p>
+            {post.frontmatter.category} | {post.frontmatter.date}{" "}
+            {post.frontmatter.update !== post.frontmatter.date && (
+              <>
+                |{" "}
+                <span style={{ color: "red" }}>
+                  updated: {post.frontmatter.update}
+                </span>
+              </>
+            )}
+          </p>
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
@@ -59,12 +70,7 @@ const BlogPostTemplate = ({
 };
 
 export const Head = ({ data: { markdownRemark: post } }) => {
-  return (
-    <Seo
-      title={post.frontmatter.title}
-      description={post.frontmatter.description || post.excerpt}
-    />
-  );
+  return <Seo title={post.frontmatter.title} />;
 };
 
 export default BlogPostTemplate;
@@ -82,12 +88,12 @@ export const pageQuery = graphql`
     }
     markdownRemark(id: { eq: $id }) {
       id
-      excerpt(pruneLength: 160)
       html
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
-        description
+        update(formatString: "MMMM DD, YYYY")
+        category
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

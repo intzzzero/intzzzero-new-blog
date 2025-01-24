@@ -39,19 +39,18 @@ module.exports = {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.nodes.map(node => {
                 return Object.assign({}, node.frontmatter, {
-                  description: node.excerpt,
                   date: node.frontmatter.date,
+                  update: node.frontmatter.update,
+                  category: node.frontmatter.category,
                   url: site.siteMetadata.siteUrl + node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + node.fields.slug,
                   custom_elements: [{ "content:encoded": node.html }],
                 });
               });
             },
             query: `
               {
-                allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
+                allMarkdownRemark(sort: {frontmatter: {update: DESC}}) {
                   nodes {
-                    excerpt
                     html
                     fields {
                       slug
@@ -59,6 +58,8 @@ module.exports = {
                     frontmatter {
                       title
                       date
+                      update
+                      category
                     }
                   }
                 }

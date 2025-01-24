@@ -4,6 +4,7 @@ import Seo from "../components/seo";
 
 const BlogIndex = ({ data }) => {
   const posts = data.allMarkdownRemark.nodes;
+  console.log(posts);
 
   return (
     <>
@@ -16,6 +17,9 @@ const BlogIndex = ({ data }) => {
               <li key={post.fields.slug}>
                 <Link to={post.fields.slug}>{title}</Link>{" "}
                 <small>{post.frontmatter.date}</small>
+                {post.frontmatter.update !== post.frontmatter.date && (
+                  <small>[updated: {post.frontmatter.update}]</small>
+                )}
               </li>
             );
           })}
