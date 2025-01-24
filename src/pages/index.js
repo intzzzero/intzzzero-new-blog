@@ -24,9 +24,22 @@ const BlogIndex = ({ data }) => {
               padding: "0.5rem 1rem",
               margin: "-2.5rem -1.3rem 2rem -1.3rem",
               cursor: "pointer",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
             }}
           >
-            INTZZZERO
+            <div>INTZZZERO</div>
+            <Link
+              to="/about"
+              style={{
+                textDecoration: "none",
+                color: "white",
+                fontSize: "0.9rem",
+              }}
+            >
+              About
+            </Link>
           </div>
         </Link>
         <ol style={{ listStyle: `none`, padding: 0 }}>
