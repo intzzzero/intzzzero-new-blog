@@ -13,7 +13,7 @@ const BlogPostTemplate = ({
       .filter(slug => slug !== post.fields.slug);
     const randomIndex = Math.floor(Math.random() * slugs.length);
     setRandomSlug(slugs[randomIndex]);
-  }, [post.fields.slug]);
+  }, [post.fields.slug, allMarkdownRemark.nodes]);
 
   return (
     <>
