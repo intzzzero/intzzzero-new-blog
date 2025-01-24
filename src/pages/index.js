@@ -18,7 +18,9 @@ const BlogIndex = ({ data }) => {
                 <Link to={post.fields.slug}>{title}</Link>{" "}
                 <small>{post.frontmatter.date}</small>
                 {post.frontmatter.update !== post.frontmatter.date && (
-                  <small>[updated: {post.frontmatter.update}]</small>
+                  <small style={{ color: "red" }}>
+                    💡 modified in {post.frontmatter.update}
+                  </small>
                 )}
               </li>
             );
@@ -39,16 +41,22 @@ export default BlogIndex;
 export const Head = () => <Seo title="All posts" />;
 
 export const pageQuery = graphql`
-  {
-    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+  query {
+    allMarkdownRemark(
+      sort: [{ frontmatter: { update: DESC } }, { frontmatter: { date: DESC } }]
+    ) {
       nodes {
+        id
+        frontmatter {
+          title
+          date
+          update
+          category
+        }
         fields {
           slug
         }
-        frontmatter {
-          date(formatString: "YYYY.MM.DD")
-          title
-        }
+        excerpt
       }
     }
   }
