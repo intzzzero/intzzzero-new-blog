@@ -16,24 +16,30 @@ path: "/blog/after-first-project-with-wecode"
 ![Chanel No.5](https://images.unsplash.com/photo-1580238169310-f642ac65ed7d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80)
 
 ## Project No.4
+
 - 글로벌 명품 브랜드 중에서도 우아함과 고급스러움의 대명사인 샤넬(Chanel)의 한국 공식 홈페이지를 클로닝하는 프로젝트
 - 샤넬의 유명한 향수 이름 No.5(넘버 파이브)를 모티브로 하여 프로젝트명을 명명함.
 - [공식 샤넬 홈페이지 링크](https://www.chanel.com/ko_KR/fashion.html)
 
 ### 개발 인원 및 기간
+
 - 개발 인원: 프론트엔드 3명, 백엔드 3명
 - 개발 기간: 2020/06/22 - 2020/07/03 (2주)
 - [프론트엔드 github 링크](https://github.com/codeAmeba/chanel-clone-frontend?organization=codeAmeba&organization=codeAmeba)
 - [백엔드 github 링크](https://github.com/wecode-bootcamp-korea/9-No.4-backend)
 
 ### 목적
+
 샤넬의 공식 홈페이지는 전체적으로 미니멀한 디자인으로 이루어져 있기에 언뜻 보면 별다른 기능이나 효과가 눈에 띄지 않지만, 페이지를 하나 하나 살펴보면 디테일한 효과나 기능에 공을 많이 들였음을 알 수 있다. 여타 홈페이지에서는 보기 드문 효과들도 있기에 이번 기회를 통해 경험해본다면 여타 프론트개발자들과 차별화 될 수 있다는 생각으로 선정하였다.
 
 ### 데모 영상(이미지에 링크)
+
 [![Chanel clone project](https://github.com/codeAmeba/amebalab/blob/master/src/images/video-thumbnail.png?raw=true)](https://youtu.be/tIeM7EzcDEo)
 
 ### 적용 기술
+
 **Front-End**
+
 - JavaScript(ES6)
 - React.js
 - Sass
@@ -42,6 +48,7 @@ path: "/blog/after-first-project-with-wecode"
 - Fontawesome
 
 **Back-End**
+
 - Python
 - Django
 - Beautifulsoup
@@ -50,12 +57,14 @@ path: "/blog/after-first-project-with-wecode"
 - MySQL
 
 **커뮤니케이션 및 버전관리**
+
 - Postman
 - Slack
 - Trello
 - Git / Github
 
 ### 구현 기능
+
 - 회원가입 / 로그인(POST, GET)
 - 전체 상품 API를 통한 상품리스트 렌더링(GET)
 - 상품 상세페이지 이동 시 해당 상품 API를 통한 상품 정보 렌더링(GET)
@@ -64,22 +73,25 @@ path: "/blog/after-first-project-with-wecode"
 - 반응형 UI
 
 ### 미구현 기능
+
 - 스크롤이벤트
 - 페이지네이션
 - 위시리스트 등록 상품 상태유지
 
-***
+---
 
 ## 만족하는 부분
+
 위코드에 오기 전에도, 위코드에 온 후에도 나름의 기초적인 지식은 갖고 있다고 생각했지만, 머릿속에만 있는 **멈춘 지식** 이라는 느낌이 강했다. '대략 이런 방식으로 이렇게 구현하면 되겠지?'라는 식으로 생각만 할뿐 실제 코드로 구현할 기회가 많지 않았기 때문이다. 물론, 내 잘못이다. 그러나 이번 1차 프로젝트를 통해 **멈춘 지식** 이 코드로 구현되며 **움직이는 지식** 으로 변모하는 과정을 지켜보게 되었다. 처음으로 백엔드의 API를 받아 상품리스트가 렌더링 되던 순간의 기억은 오래도록 선명하게 남을 것 같다. 희열, 짜릿함, 성취감 등의 흔한 단어로는 충분하게 설명할 수 없는 기분이다. 그리고, 막연하게 '이런 식으로 하면 되지 않을까?'라고 생각했던 코드가 생각했던 그대로 동작하던 순간 또한 그렇다.
 
 <br />
 
-1차 프로젝트를 시작하기 바로 전까지 내 나름의 고민은, 대부분의 수강생들과 마찬가지로 더딘 성장에 있었다. 내가 익혀야 할 기술과 배워야 할 지식이 너무나도 방대한 것에 비해 나의 학습 속도가 형편없다고 느꼈던 탓이다. 최근 읽었던 [프로그래머의 길, 멘토에게 묻다(Apprenticeship Patterns)](https://codeameba.netlify.app/blog/apprenticeship-patterns)에서는 나와 같은 상황에 적합한 해결책으로 **한발 물러서라** 했다. 조급하게 앞으로만 나가지 말고 잠시 물러서서 내가 알고 있는 것들을 점검하고, 내 능력보다 살짝 어려운 과제를 수행하라고 했다. 그런 와중에 시작된 1차 프로젝트는 정말 적절한 과제였다고 생각한다. 덕분에 한편으로는 자신감을 얻었으며, 다른 한편으로는 부족한 부분과 그것을 채우기 위해 나아갈 방향이 어렴풋이 보였다.
+1차 프로젝트를 시작하기 바로 전까지 내 나름의 고민은, 대부분의 수강생들과 마찬가지로 더딘 성장에 있었다. 내가 익혀야 할 기술과 배워야 할 지식이 너무나도 방대한 것에 비해 나의 학습 속도가 형편없다고 느꼈던 탓이다. 최근 읽었던 [프로그래머의 길, 멘토에게 묻다(Apprenticeship Patterns)](https://intzzzero.netlify.app/apprenticeship-patterns)에서는 나와 같은 상황에 적합한 해결책으로 **한발 물러서라** 했다. 조급하게 앞으로만 나가지 말고 잠시 물러서서 내가 알고 있는 것들을 점검하고, 내 능력보다 살짝 어려운 과제를 수행하라고 했다. 그런 와중에 시작된 1차 프로젝트는 정말 적절한 과제였다고 생각한다. 덕분에 한편으로는 자신감을 얻었으며, 다른 한편으로는 부족한 부분과 그것을 채우기 위해 나아갈 방향이 어렴풋이 보였다.
 
 ![step](https://images.unsplash.com/photo-1502101872923-d48509bff386?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80)
 
 ## 아쉬운 부분
+
 개인적으로는 위와 같이 나름의 수확이 있었기에 아쉬움보다 만족이 크다. 하지만, 개인 프로젝트가 아닌 팀프로젝트였기에 크고 작은 아쉬움이 남았다.
 
 <br />

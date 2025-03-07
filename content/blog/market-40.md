@@ -12,6 +12,7 @@ path: "/blog/market-40"
 <br/>
 
 ## 마켓 4.0
+
 마케팅의 아버지라고 불리우는 필립 코틀러의 신간이다. 마켓 3.0 이후 7년만(정식 번역본 기준)에 출간하였는데, 그리 길지 않은 시간이었지만 스마트폰이 보급되어 초연결 사회가 도래한 만큼 마케팅의 방법 또한 바뀌어야 한다고 말하는 책이다. 그 배경에는 디지털이 가장 큰 원인으로 자리잡고 있겠지만, 그로 말미암아 주류 고객층까지 바뀌었다는 것에 의의가 있겠다. 과거에는 주류 고객이 연장자, 남성, 시티즌이었다면, 이제는 디지털 네이티브 세대라고 불리우는 젊은이, 여성, 네티즌이 시장을 주도한다. 그리고, 이 책은 그러한 변화에 마케터들이 어떻게 전략을 세울 것인가에 대한 친절한 조언을 건낸다.
 
 이 책은, 크게 3개의 파트로 나누어져 있다. 1부에서는 필립 코틀러가 현재 우리가 살고 있는 세계를 관찰하고 알아낸 결과물들에 대해 말하고 있다. 조금 더 자세히 말하자면, 세계의 변화와 트렌드에 영향을 주는 힘의 세 가지 변화가 어떻게 일어났는지 짚어주고 있다. 2부에서는 이러한 변화 속에서 마케터로서 생산성을 높이기 위해 무엇을 해야 하는지 이야기 하고 있다. 끝으로 3부에서는 마켓 4.0 시대에 필수적인 주요 전술들을 설명하고 있다.
@@ -41,6 +42,7 @@ _개인적에서 사회적으로_
 **그 어느 때보다 가족처럼 친구처럼 진정성 있고 투명한 관계가 요구되는 시기라고 생각한다.**
 
 **다른 북리뷰:**
-- [프로그래밍 심리학](https://codeameba.netlify.app/blog/phychology-of-programming)
-- [프로그래머의 길, 멘토에게 묻다(Apprenticeship Patterns)](https://codeameba.netlify.app/blog/apprenticeship-patterns)
-- [조엘 온 소프트웨어](https://codeameba.netlify.app/blog/joel-on-software)
+
+- [프로그래밍 심리학](https://intzzzero.netlify.app/phychology-of-programming)
+- [프로그래머의 길, 멘토에게 묻다(Apprenticeship Patterns)](https://intzzzero.netlify.app/apprenticeship-patterns)
+- [조엘 온 소프트웨어](https://intzzzero.netlify.app/joel-on-software)
