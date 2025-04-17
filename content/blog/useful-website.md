@@ -1,7 +1,7 @@
 ---
 title: "나의 북마크 목록"
 date: "2023-01-31"
-update: "2023-01-31"
+update: "2025-04-17"
 draft: false
 category: "etc"
 path: "/blog/useful-website"
@@ -29,6 +29,7 @@ path: "/blog/useful-website"
 - [아웃사이더님 블로그](https://blog.outsider.ne.kr/)
 - [캡틴판교님 블로그](https://joshua1988.github.io/tech/)
 - [Toss - Frontend Fundamentals](https://frontend-fundamentals.com/)
+- [서광열님 블로그](https://kwangyulseo.wordpress.com/)
 
 <br /><br />
 
