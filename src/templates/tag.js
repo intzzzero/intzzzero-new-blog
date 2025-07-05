@@ -45,9 +45,6 @@ const TagTemplate = ({ data, pageContext }) => {
                     <Link to={post.fields.slug} className="wiki-post-link">
                       {title}
                     </Link>
-                    {post.excerpt && (
-                      <div className="wiki-post-excerpt">{post.excerpt}</div>
-                    )}
                   </div>
                 </li>
               );
