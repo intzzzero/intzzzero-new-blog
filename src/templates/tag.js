@@ -1,23 +1,31 @@
 import * as React from "react";
 import { Link, graphql } from "gatsby";
-import Seo from "../components/seo";
 import Navigation from "../components/navigation";
-import DocumentStats from "../components/document-stats";
+import Seo from "../components/seo";
 
-const BlogIndex = ({ data }) => {
+const TagTemplate = ({ data, pageContext }) => {
   const posts = data.allMarkdownRemark.nodes;
-  const [showAll, setShowAll] = React.useState(false);
-  const displayPosts = showAll ? posts : posts.slice(0, 10);
+  const { tag } = pageContext;
+  const totalCount = posts.length;
 
   return (
     <>
-      <Seo title="All posts" />
+      <Seo title={`Posts tagged "${tag}"`} />
       <Navigation />
       <main className="wiki-main-wrapper">
         <div className="wiki-content">
-          <h3 className="wiki-section-title">최근 변경된 문서</h3>
+          <h3 className="wiki-section-title">
+            {tag} 카테고리 ({totalCount}개 문서)
+          </h3>
+
+          <div className="wiki-tag-breadcrumb">
+            <Link to="/tags" className="wiki-breadcrumb-link">
+              ← 모든 카테고리
+            </Link>
+          </div>
+
           <ol className="wiki-post-list">
-            {displayPosts.map(post => {
+            {posts.map(post => {
               const title = post.frontmatter.title || post.fields.slug;
               const updateDate =
                 post.frontmatter.update || post.frontmatter.date;
@@ -37,10 +45,8 @@ const BlogIndex = ({ data }) => {
                     <Link to={post.fields.slug} className="wiki-post-link">
                       {title}
                     </Link>
-                    {post.frontmatter.category && (
-                      <span className="wiki-post-category">
-                        {post.frontmatter.category}
-                      </span>
+                    {post.excerpt && (
+                      <div className="wiki-post-excerpt">{post.excerpt}</div>
                     )}
                   </div>
                 </li>
@@ -48,51 +54,39 @@ const BlogIndex = ({ data }) => {
             })}
           </ol>
 
-          {!showAll && posts.length > 10 && (
-            <div className="wiki-show-all">
-              <button
-                onClick={() => setShowAll(true)}
-                className="wiki-show-all-button"
-              >
-                전체 문서 리스트 보기 ({posts.length} 항목)
-              </button>
-            </div>
-          )}
-
-          {/* 문서 통계 섹션 */}
-          <DocumentStats />
+          <div className="wiki-tag-navigation">
+            <Link to="/tags" className="wiki-nav-button">
+              모든 카테고리 보기
+            </Link>
+            <Link to="/" className="wiki-nav-button">
+              최근 문서 보기
+            </Link>
+          </div>
         </div>
       </main>
     </>
   );
 };
 
-export default BlogIndex;
-
-/**
- * Head export to define metadata for the page
- *
- * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
- */
-export const Head = () => <Seo title="All posts" />;
+export default TagTemplate;
 
 export const pageQuery = graphql`
-  query {
+  query ($tag: String!) {
     allMarkdownRemark(
+      filter: { frontmatter: { category: { eq: $tag } } }
       sort: [{ frontmatter: { update: DESC } }, { frontmatter: { date: DESC } }]
     ) {
       nodes {
-        id
+        fields {
+          slug
+        }
         frontmatter {
           title
           date
           update
           category
         }
-        fields {
-          slug
-        }
-        excerpt
+        excerpt(pruneLength: 100)
       }
     }
   }

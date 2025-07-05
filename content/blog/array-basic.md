@@ -12,6 +12,7 @@ path: "/blog/array-basic"
 자바스크립트에서 배열은 무척 중요한 **객체(object)** 이며, 이를 통해 다양한 작업들을 수행할 수 있다. 기본적인 사항들은 다음과 같다.
 
 ### 첫째
+
 객체는 순서가 없지만, 배열은 순서가 있는 데이터의 집합이며 0부터 시작하는 숫자형 인덱스를 사용한다.
 
 ```js
@@ -23,15 +24,16 @@ console.log(typeof beerCollection); // object
 ```
 
 ### 둘째
+
 자바스크립트의 모든 데이터 타입이 배열의 요소가 될 수 있다. 즉, 배열의 요소로 또다른 배열을 포함한다거나, 객체나 함수까지 하나의 배열에 포함할 수 있다.
 
 ```js
 let beerCollection = [
-  'kirin', // string
+  "kirin", // string
   3, // number
-  ['oneBottle', 'twoBottle', 'threeBottle'], // array
+  ["oneBottle", "twoBottle", "threeBottle"], // array
   function drinkBeer() {}, // function
-  { name: 'stella', country: 'Belgium' } // object literal
+  { name: "stella", country: "Belgium" }, // object literal
 ];
 
 console.log(beerCollection);
@@ -49,25 +51,23 @@ __proto__:Array(0)
 ```
 
 ### 셋째
+
 배열은 기본적으로 `length` 프로퍼티를 가지며, 이것은 요소의 개수를 나타낸다.
 
 ```js
-let beerCollection = [
-  'kirin', 'stella', 'asahi', 'cass', 'sapporo', 'kozel'
-];
+let beerCollection = ["kirin", "stella", "asahi", "cass", "sapporo", "kozel"];
 
 console.log(beerCollection.length); // 6
 ```
 
 ### 넷째
+
 배열의 길이(length)보다 큰 인덱스로 요소를 할당하면 배열은 자동으로 길이가 늘어나며, 비어있는 인덱스에는 `empty`가 채워진다.
 
 ```js
-let beerCollection = [
-  'kirin', 'stella', 'asahi', 'cass', 'sapporo', 'kozel'
-];
+let beerCollection = ["kirin", "stella", "asahi", "cass", "sapporo", "kozel"];
 
-beerCollection[9] = '1664 blanc';
+beerCollection[9] = "1664 blanc";
 console.log(beerCollection.length); // 10
 console.log(beerCollection);
 // 콘솔에서 아래와 같이 확인할 수 있다.
@@ -86,6 +86,7 @@ __proto__:Array(0)
 ```
 
 ### 다섯째
+
 `Array` 생성자로 배열을 만들 수도 있다. 하지만, 그런 경우는 드물다.
 
 ```js
@@ -94,7 +95,15 @@ let beerCollection = new Array(5);
 console.log(beerCollection); // (5) [empty × 5]
 ```
 
+## 관련 문서
+
+배열에 대해 더 자세히 알아보려면 다음 문서들을 참고하세요:
+
+- [[위키링크 테스트]] - 위키링크 기능 설명
+- 배열 메소드 관련 문서들 (추후 작성 예정)
+
 **참고:**
+
 - Learning JavaScript (ISBN 9788968483387)
 - [poiemaweb | 배열](https://poiemaweb.com/js-array)
 - [MDN | Array](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array)

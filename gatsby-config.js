@@ -20,6 +20,52 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
+      resolve: `gatsby-plugin-local-search`,
+      options: {
+        name: `blog`,
+        engine: `flexsearch`,
+        engineOptions: {
+          encode: "icase",
+          tokenize: "forward",
+          async: false,
+        },
+        query: `
+          {
+            allMarkdownRemark {
+              nodes {
+                id
+                fields {
+                  slug
+                }
+                frontmatter {
+                  title
+                  date
+                  update
+                  category
+                }
+                excerpt
+                rawMarkdownBody
+              }
+            }
+          }
+        `,
+        ref: `id`,
+        index: [`title`, `category`, `excerpt`, `rawMarkdownBody`],
+        store: [`id`, `slug`, `title`, `date`, `update`, `category`, `excerpt`],
+        normalizer: ({ data }) =>
+          data.allMarkdownRemark.nodes.map(node => ({
+            id: node.id,
+            slug: node.fields.slug,
+            title: node.frontmatter.title,
+            date: node.frontmatter.date,
+            update: node.frontmatter.update,
+            category: node.frontmatter.category,
+            excerpt: node.excerpt,
+            body: node.rawMarkdownBody,
+          })),
+      },
+    },
+    {
       resolve: `gatsby-plugin-gtag`,
       options: {
         // your google analytics tracking id
@@ -99,6 +145,33 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          {
+            resolve: `gatsby-remark-wiki-link`,
+            options: {
+              pageResolver: name => [name.replace(/ /g, "-").toLowerCase()],
+              hrefTemplate: permalink => `/${permalink}`,
+              wikiLinkClassName: "wiki-link",
+              newClassName: "wiki-link-new",
+            },
+          },
+          {
+            resolve: `gatsby-remark-mermaid`,
+            options: {
+              language: "mermaid",
+              theme: "default",
+              viewport: {
+                width: 200,
+                height: 200,
+              },
+              mermaidOptions: {
+                themeCSS: `
+                  .node rect { fill: #fff; stroke: #333; stroke-width: 1.5px; }
+                  .edgeLabel { background-color: #fff; }
+                  .cluster rect { fill: #f9f9f9; }
+                `,
+              },
+            },
+          },
           {
             resolve: `gatsby-remark-prismjs`,
             options: {

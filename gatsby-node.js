@@ -24,6 +24,9 @@ exports.createPages = async ({ graphql, actions }) => {
           fields {
             slug
           }
+          frontmatter {
+            category
+          }
         }
       }
     }
@@ -43,6 +46,24 @@ exports.createPages = async ({ graphql, actions }) => {
       component: require.resolve("./src/templates/blog-post.js"),
       context: {
         id: post.id,
+      },
+    });
+  });
+
+  // Create tag pages
+  const tags = new Set();
+  posts.forEach(post => {
+    if (post.frontmatter.category) {
+      tags.add(post.frontmatter.category);
+    }
+  });
+
+  Array.from(tags).forEach(tag => {
+    createPage({
+      path: `/tags/${tag.toLowerCase()}/`,
+      component: require.resolve("./src/templates/tag.js"),
+      context: {
+        tag: tag,
       },
     });
   });

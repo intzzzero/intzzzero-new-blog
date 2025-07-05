@@ -1,105 +1,125 @@
 import * as React from "react";
 import { Link, graphql } from "gatsby";
 import Seo from "../components/seo";
+import Navigation from "../components/navigation";
+import ReadingProgress from "../components/reading-progress";
+import { findBacklinks } from "../utils/wiki-link-resolver";
 
 const BlogPostTemplate = ({
   data: { markdownRemark: post, allMarkdownRemark },
 }) => {
-  const [randomSlug, setRandomSlug] = React.useState("");
-
-  React.useEffect(() => {
-    const slugs = allMarkdownRemark.nodes
-      .map(node => node.fields.slug)
-      .filter(slug => slug !== post.fields.slug);
-    const randomIndex = Math.floor(Math.random() * slugs.length);
-    setRandomSlug(slugs[randomIndex]);
-  }, [post.fields.slug, allMarkdownRemark.nodes]);
+  const allPosts = allMarkdownRemark.nodes;
+  const backlinks = findBacklinks(post, allPosts);
 
   return (
     <>
       <Seo title={post.frontmatter.title} />
-      <main className="global-wrapper">
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <div
-            style={{
-              backgroundColor: "#0000be",
-              color: "white",
-              padding: "0.5rem 1rem",
-              margin: "-2.5rem -1.3rem 2rem -1.3rem",
-              cursor: "pointer",
-            }}
+      <Navigation />
+      <ReadingProgress content={post.html} />
+      <main className="wiki-main-wrapper">
+        <div className="wiki-content">
+          <article
+            className="wiki-article"
+            itemScope
+            itemType="http://schema.org/Article"
           >
-            INTZZZERO
-          </div>
-        </Link>
-        <article
-          className="blog-post"
-          itemScope
-          itemType="http://schema.org/Article"
-        >
-          <header>
-            <h1
-              itemProp="headline"
-              style={{
-                marginTop: "0",
-                marginBottom: "0.5rem",
-                color: "#0000be",
-              }}
-            >
-              {post.frontmatter.title}
-            </h1>
-            <p
-              style={{
-                fontSize: "0.9rem",
-                color: "#666",
-                marginBottom: "2rem",
-              }}
-            >
-              {post.frontmatter.category && (
-                <span style={{ marginRight: "1rem" }}>
-                  #{post.frontmatter.category}
+            <header className="wiki-article-header">
+              <h1 itemProp="headline" className="wiki-article-title">
+                {post.frontmatter.title}
+              </h1>
+              <div className="wiki-article-meta">
+                {post.frontmatter.category && (
+                  <Link
+                    to={`/tags/${post.frontmatter.category.toLowerCase()}/`}
+                    className="wiki-article-category"
+                  >
+                    {post.frontmatter.category}
+                  </Link>
+                )}
+                <span className="wiki-article-date">
+                  {new Date(post.frontmatter.date)
+                    .toLocaleDateString("ko-KR", {
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit",
+                    })
+                    .replace(/\./g, ".")
+                    .replace(/\s/g, "")}
                 </span>
-              )}
-              {post.frontmatter.date}
-              {post.frontmatter.update !== post.frontmatter.date && (
-                <span style={{ marginLeft: "1rem" }}>
-                  (수정: {post.frontmatter.update})
-                </span>
-              )}
-            </p>
-          </header>
-          <section
-            dangerouslySetInnerHTML={{ __html: post.html }}
-            itemProp="articleBody"
-          />
-          <hr style={{ margin: "5rem 0 7.5rem 0" }} />
-          <nav className="blog-post-nav">
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                margin: "-2.5rem -1.3rem",
-              }}
-            >
-              <Link
-                to={randomSlug}
-                style={{
-                  textDecoration: "none",
-                }}
-              >
-                <div className="nav-button">랜덤 포스트</div>
-              </Link>
-              <Link
-                to="/"
-                style={{
-                  textDecoration: "none",
-                }}
-              >
-                <div className="nav-button">목록으로</div>
-              </Link>
-            </div>
-          </nav>
-        </article>
+                {post.frontmatter.update !== post.frontmatter.date && (
+                  <span className="wiki-article-update">
+                    (수정:{" "}
+                    {new Date(post.frontmatter.update)
+                      .toLocaleDateString("ko-KR", {
+                        year: "numeric",
+                        month: "2-digit",
+                        day: "2-digit",
+                      })
+                      .replace(/\./g, ".")
+                      .replace(/\s/g, "")}
+                    )
+                  </span>
+                )}
+              </div>
+            </header>
+
+            <section
+              className="wiki-article-content"
+              dangerouslySetInnerHTML={{ __html: post.html }}
+              itemProp="articleBody"
+            />
+
+            {/* 백링크 섹션 */}
+            {backlinks.length > 0 && (
+              <section className="wiki-backlinks">
+                <h3 className="wiki-backlinks-title">
+                  이 문서를 참조하는 문서들 ({backlinks.length})
+                </h3>
+                <ul className="wiki-backlinks-list">
+                  {backlinks.map((backlink, index) => (
+                    <li key={index} className="wiki-backlink-item">
+                      <Link to={backlink.slug} className="wiki-backlink-link">
+                        {backlink.title}
+                      </Link>
+                      <span className="wiki-backlink-meta">
+                        {backlink.category && (
+                          <span className="wiki-backlink-category">
+                            {backlink.category}
+                          </span>
+                        )}
+                        <span className="wiki-backlink-date">
+                          {new Date(backlink.date)
+                            .toLocaleDateString("ko-KR", {
+                              year: "numeric",
+                              month: "2-digit",
+                              day: "2-digit",
+                            })
+                            .replace(/\./g, ".")
+                            .replace(/\s/g, "")}
+                        </span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            {/* 네비게이션 */}
+            <nav className="wiki-article-nav">
+              <div className="wiki-nav-buttons">
+                <Link to="/random" className="wiki-nav-button">
+                  랜덤 문서
+                </Link>
+                <Link to="/" className="wiki-nav-button">
+                  최근 문서
+                </Link>
+                <Link to="/tags" className="wiki-nav-button">
+                  모든 카테고리
+                </Link>
+              </div>
+            </nav>
+          </article>
+        </div>
       </main>
     </>
   );
@@ -112,20 +132,28 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       html
+      rawMarkdownBody
       fields {
         slug
       }
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
-        update(formatString: "MMMM DD, YYYY")
+        date
+        update
         category
       }
     }
-    allMarkdownRemark(filter: { id: { ne: $id } }) {
+    allMarkdownRemark {
       nodes {
+        id
+        rawMarkdownBody
         fields {
           slug
+        }
+        frontmatter {
+          title
+          date
+          category
         }
       }
     }
