@@ -159,17 +159,6 @@ module.exports = {
             options: {
               language: "mermaid",
               theme: "default",
-              viewport: {
-                width: 200,
-                height: 200,
-              },
-              mermaidOptions: {
-                themeCSS: `
-                  .node rect { fill: #fff; stroke: #333; stroke-width: 1.5px; }
-                  .edgeLabel { background-color: #fff; }
-                  .cluster rect { fill: #f9f9f9; }
-                `,
-              },
             },
           },
           {

@@ -1,0 +1,10 @@
+[build]
+  command = "npx playwright install chromium && npm run build"
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "18"
+  PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "false"
+
+[[plugins]]
+  package = "@netlify/plugin-gatsby" 

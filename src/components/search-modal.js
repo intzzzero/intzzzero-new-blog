@@ -19,9 +19,12 @@ const SearchModal = ({ isOpen, onClose }) => {
   const searchData = data.localSearchBlog;
   const hasSearchData = searchData && searchData.index && searchData.store;
 
-  const results = hasSearchData
-    ? useFlexSearch(query, searchData.index, searchData.store)
-    : [];
+  // Hook 규칙을 준수하기 위해 항상 useFlexSearch를 호출
+  const results = useFlexSearch(
+    hasSearchData ? query : "",
+    hasSearchData ? searchData.index : "",
+    hasSearchData ? searchData.store : {}
+  );
 
   const searchInputRef = React.useRef(null);
 
