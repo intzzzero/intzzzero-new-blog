@@ -1401,6 +1401,8 @@ input:focus {
 .gatsby-remark-mermaid {
   margin: 2rem 0;
   text-align: center;
+  overflow-x: auto;
+  /* 가로 스크롤 허용 */
 }
 
 .gatsby-remark-mermaid svg {
@@ -1408,8 +1410,39 @@ input:focus {
   height: auto;
   border: 1px solid #e0e0e0;
   border-radius: 4px;
-  padding: 1rem;
+  padding: 1.5rem;
   background: #fafafa;
+  /* 최소 너비 보장 */
+  min-width: 300px;
+  /* 텍스트 잘림 방지 */
+  overflow: visible;
+}
+
+/* Mermaid 텍스트 스타일 개선 */
+.gatsby-remark-mermaid .node text,
+.gatsby-remark-mermaid .edgeLabel text {
+  font-size: 12px !important;
+  font-family: var(--font-body) !important;
+  fill: #333 !important;
+}
+
+/* 모바일 환경에서 mermaid 다이어그램 최적화 */
+@media (max-width: 42rem) {
+  .gatsby-remark-mermaid {
+    margin: 1rem -1rem;
+    /* 좌우 여백을 제거하여 더 넓은 공간 확보 */
+  }
+  
+  .gatsby-remark-mermaid svg {
+    width: 100%;
+    min-width: 280px;
+    padding: 1rem;
+  }
+  
+  .gatsby-remark-mermaid .node text,
+  .gatsby-remark-mermaid .edgeLabel text {
+    font-size: 10px !important;
+  }
 }
 
 @media (max-width: 42rem) {

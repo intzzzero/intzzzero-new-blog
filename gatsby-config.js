@@ -159,6 +159,33 @@ module.exports = {
             options: {
               language: "mermaid",
               theme: "default",
+              viewport: {
+                width: 200,
+                height: 200,
+              },
+              mermaidOptions: {
+                theme: "default",
+                themeVariables: {
+                  fontFamily: "var(--font-body)",
+                  fontSize: "12px",
+                  primaryColor: "#f0f8ff",
+                  primaryTextColor: "#333",
+                  primaryBorderColor: "#0066cc",
+                  lineColor: "#666",
+                  textColor: "#333",
+                },
+                flowchart: {
+                  useMaxWidth: true,
+                  htmlLabels: true,
+                  curve: "basis",
+                },
+                sequence: {
+                  useMaxWidth: true,
+                },
+                gantt: {
+                  useMaxWidth: true,
+                },
+              },
             },
           },
           {
