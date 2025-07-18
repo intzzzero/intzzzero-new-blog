@@ -17,11 +17,7 @@ const Layout = ({ location, title, children }) => {
           </span>
         </div>
         <div className="terminal-footer-signature">
-          ┌─────────────────────────────────────────────────────┐
-          <br />
-          │ end of transmission - press any key to continue... │
-          <br />
-          └─────────────────────────────────────────────────────┘
+          [end of transmission - press any key to continue...]
         </div>
       </footer>
     </div>

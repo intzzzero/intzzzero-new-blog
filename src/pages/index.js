@@ -47,9 +47,6 @@ const BlogIndex = ({ data, location }) => {
 
         {!showAll && posts.length > 15 && (
           <div className="terminal-more-section">
-            <div className="terminal-separator-line">
-              ─────────────────────────────────────────────────────────
-            </div>
             <button
               onClick={() => setShowAll(true)}
               className="terminal-more-button"

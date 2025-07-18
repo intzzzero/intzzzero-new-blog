@@ -83,8 +83,8 @@
 /* HTML elements */
 
 *,
-:after,
-:before {
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -94,6 +94,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: var(--terminal-bg);
+  overflow-x: hidden;
 }
 
 body {
@@ -106,6 +107,8 @@ body {
   /* Terminal-like text rendering */
   letter-spacing: 0.02em;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Terminal Footer Styles */
@@ -283,6 +286,28 @@ table {
   margin-bottom: var(--spacing-8);
   border-collapse: collapse;
   border-spacing: 0.25rem;
+  overflow-x: auto;
+  display: block;
+}
+
+@media (max-width: 42rem) {
+  table {
+    font-size: var(--fontSize-0);
+  }
+
+  table tbody,
+  table thead,
+  table tr {
+    display: block;
+  }
+
+  table th,
+  table td {
+    display: block;
+    text-align: left;
+    border-bottom: 1px solid var(--terminal-border);
+    padding: var(--spacing-1) var(--spacing-2);
+  }
 }
 
 table thead tr th {
@@ -423,16 +448,6 @@ a:hover::after {
   font-size: var(--fontSize-0);
 }
 
-.terminal-separator-line {
-  color: var(--terminal-border);
-  font-family: var(--fontFamily-mono);
-  font-size: var(--fontSize-0);
-  text-align: center;
-  margin: var(--spacing-4) 0;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
 /* Custom classes */
 
 .global-wrapper {
@@ -449,6 +464,8 @@ a:hover::after {
   position: relative;
   margin-top: var(--spacing-4);
   margin-bottom: var(--spacing-4);
+  width: 100%;
+  overflow-x: hidden;
 }
 
 /* Terminal window title bar */
@@ -935,6 +952,7 @@ a:hover::after {
     border-radius: 0;
     border-left: none;
     border-right: none;
+    padding: var(--spacing-6) var(--spacing-3);
   }
 
   .global-wrapper::before {
@@ -947,6 +965,7 @@ a:hover::after {
     flex-direction: column;
     gap: var(--spacing-2);
     text-align: center;
+    padding: var(--spacing-2) var(--spacing-3);
   }
 
   .terminal-time {
@@ -966,6 +985,7 @@ a:hover::after {
   .terminal-nav-items {
     justify-content: center;
     gap: var(--spacing-3);
+    flex-wrap: wrap;
   }
 
   .post-list-item {
@@ -1004,6 +1024,7 @@ a:hover::after {
     padding: var(--spacing-0) var(--spacing-0) var(--spacing-0) var(--spacing-4);
     margin-left: var(--spacing-0);
   }
+
   ul,
   ol {
     list-style-position: inside;
@@ -2178,6 +2199,8 @@ input:focus {
   padding: var(--spacing-4) !important;
   overflow-x: auto;
   border: none !important;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .gatsby-highlight code[class*="language-"] {
@@ -2848,8 +2871,10 @@ input:focus {
   }
 
   .gatsby-highlight pre[class*="language-"] {
-    padding: var(--spacing-3) !important;
+    padding: var(--spacing-2) !important;
     font-size: var(--fontSize-0) !important;
+    word-wrap: break-word;
+    white-space: pre-wrap;
   }
 }
 

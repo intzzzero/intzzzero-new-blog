@@ -88,10 +88,6 @@ const TerminalHeader = ({ siteTitle = "intzzzero", location }) => {
           </span>
         </div>
       </nav>
-
-      <div className="terminal-separator-line">
-        ─────────────────────────────────────────────────────────
-      </div>
     </header>
   );
 };
