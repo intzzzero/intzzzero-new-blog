@@ -1,1 +1,23 @@
- 
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- 배경 -->
+  <rect width="32" height="32" fill="#1a1a1a" rx="4"/>
+  
+  <!-- 터미널 프롬프트 스타일의 테두리 -->
+  <rect x="1" y="1" width="30" height="30" fill="none" stroke="#00ff00" stroke-width="0.5" rx="3"/>
+  
+  <!-- 메인 텍스트: I와 0을 조합 -->
+  <text x="16" y="22" 
+        font-family="'Courier New', monospace" 
+        font-size="18" 
+        font-weight="bold" 
+        text-anchor="middle" 
+        fill="#00ff00">I0</text>
+  
+  <!-- 터미널 커서 효과 -->
+  <rect x="22" y="18" width="2" height="6" fill="#00ff00" opacity="0.8"/>
+  
+  <!-- 작은 점들로 디지털 느낌 강화 -->
+  <circle cx="6" cy="6" r="1" fill="#00ff00" opacity="0.3"/>
+  <circle cx="26" cy="6" r="1" fill="#00ff00" opacity="0.3"/>
+  <circle cx="6" cy="26" r="1" fill="#00ff00" opacity="0.3"/>
+</svg> 
