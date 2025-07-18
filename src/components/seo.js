@@ -45,6 +45,22 @@ const Seo = ({ description, title, children }) => {
       />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={metaDescription} />
+
+      {/* Favicon */}
+      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      <link rel="shortcut icon" href="/favicon.ico" />
+
+      {/* PWA Manifest */}
+      <link rel="manifest" href="/site.webmanifest" />
+
+      {/* Theme Color for Mobile Browsers */}
+      <meta name="theme-color" content="#00ff00" />
+      <meta name="msapplication-TileColor" content="#1a1a1a" />
+
+      {/* Apple Touch Icon */}
+      <link rel="apple-touch-icon" href="/favicon.svg" />
+
       {children}
     </Helmet>
   );
