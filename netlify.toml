@@ -5,6 +5,10 @@
 [build.environment]
   NODE_VERSION = "20"
   PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "false"
+  # Mermaid 렌더링을 위한 Playwright 최적화
+  PLAYWRIGHT_BROWSERS_PATH = "0"
+  # 헤드리스 브라우저 안정성 개선
+  CHROME_DEVEL_SANDBOX = "false"
 
 [[plugins]]
   package = "@netlify/plugin-gatsby" 

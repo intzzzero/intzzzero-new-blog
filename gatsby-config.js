@@ -160,14 +160,15 @@ module.exports = {
               language: "mermaid",
               theme: "default",
               viewport: {
-                width: 200,
-                height: 200,
+                width: 800,
+                height: 600,
               },
               mermaidOptions: {
                 theme: "default",
                 themeVariables: {
-                  fontFamily: "var(--font-body)",
-                  fontSize: "12px",
+                  // 웹 안전 폰트 사용으로 변경 (Netlify 환경에서 안정적)
+                  fontFamily: "Arial, sans-serif",
+                  fontSize: "14px",
                   primaryColor: "#f0f8ff",
                   primaryTextColor: "#333",
                   primaryBorderColor: "#0066cc",
@@ -178,13 +179,50 @@ module.exports = {
                   useMaxWidth: true,
                   htmlLabels: true,
                   curve: "basis",
+                  // 한국어 텍스트를 위한 패딩 증가
+                  padding: 15,
                 },
                 sequence: {
                   useMaxWidth: true,
+                  // 시퀀스 다이어그램 텍스트 여백 증가
+                  actorMargin: 50,
+                  boxTextMargin: 5,
+                  noteMargin: 10,
+                  messageMargin: 35,
                 },
                 gantt: {
                   useMaxWidth: true,
+                  // 간트 차트 텍스트 여백 증가
+                  leftPadding: 75,
+                  gridLineStartPadding: 35,
                 },
+              },
+              // Netlify 빌드 환경을 위한 추가 옵션
+              launchOptions: {
+                args: [
+                  "--no-sandbox",
+                  "--disable-setuid-sandbox",
+                  "--disable-dev-shm-usage",
+                  "--disable-gpu",
+                  "--no-first-run",
+                  "--no-zygote",
+                  "--single-process",
+                  "--disable-extensions",
+                ],
+              },
+              // 렌더링 실패 시 fallback
+              errorFallback: (node, error, file) => {
+                console.warn("Mermaid 다이어그램 렌더링 실패:", error.message);
+                return {
+                  type: "html",
+                  value: `<div class="mermaid-error">
+                    <p>⚠️ 다이어그램을 렌더링할 수 없습니다.</p>
+                    <details>
+                      <summary>원본 코드 보기</summary>
+                      <pre><code>${node.value}</code></pre>
+                    </details>
+                  </div>`,
+                };
               },
             },
           },
