@@ -1,36 +1,31 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import * as React from "react";
+import TerminalHeader from "./terminal-header";
 
 const Layout = ({ location, title, children }) => {
-  const rootPath = `${__PATH_PREFIX__}/`
-  const isRootPath = location.pathname === rootPath
-  let header
-
-  if (isRootPath) {
-    header = (
-      <h1 className="main-heading">
-        <Link to="/">{title}</Link>
-      </h1>
-    )
-  } else {
-    header = (
-      <Link className="header-link-home" to="/">
-        {title}
-      </Link>
-    )
-  }
+  const rootPath = `${__PATH_PREFIX__}/`;
+  const isRootPath = location.pathname === rootPath;
 
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath}>
-      <header className="global-header">{header}</header>
-      <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
+      <TerminalHeader siteTitle={title} location={location} />
+      <main className="terminal-main">{children}</main>
+      <footer className="terminal-footer">
+        <div className="terminal-footer-content">
+          <span className="terminal-footer-prompt">$</span>
+          <span className="terminal-footer-text">
+            echo "© {new Date().getFullYear()} intzzzero | Built with Gatsby"
+          </span>
+        </div>
+        <div className="terminal-footer-signature">
+          ┌─────────────────────────────────────────────────────┐
+          <br />
+          │ end of transmission - press any key to continue... │
+          <br />
+          └─────────────────────────────────────────────────────┘
+        </div>
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

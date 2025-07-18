@@ -1,69 +1,72 @@
 import * as React from "react";
 import { Link, graphql } from "gatsby";
+import Layout from "../components/layout";
 import Seo from "../components/seo";
-import Navigation from "../components/navigation";
 import DocumentStats from "../components/document-stats";
 
-const BlogIndex = ({ data }) => {
+const BlogIndex = ({ data, location }) => {
   const posts = data.allMarkdownRemark.nodes;
   const [showAll, setShowAll] = React.useState(false);
-  const displayPosts = showAll ? posts : posts.slice(0, 10);
+  const displayPosts = showAll ? posts : posts.slice(0, 15);
 
   return (
-    <>
+    <Layout location={location} title="intzzzero">
       <Seo title="All posts" />
-      <Navigation />
-      <main className="wiki-main-wrapper">
-        <div className="wiki-content">
-          <h3 className="wiki-section-title">최근 변경된 문서</h3>
-          <ol className="wiki-post-list">
-            {displayPosts.map(post => {
-              const title = post.frontmatter.title || post.fields.slug;
-              const updateDate =
-                post.frontmatter.update || post.frontmatter.date;
-              const formattedDate = new Date(updateDate)
-                .toLocaleDateString("ko-KR", {
-                  year: "numeric",
-                  month: "2-digit",
-                  day: "2-digit",
-                })
-                .replace(/\./g, ".")
-                .replace(/\s/g, "");
 
-              return (
-                <li key={post.fields.slug} className="wiki-post-item">
-                  <div className="wiki-post-date">{formattedDate}</div>
-                  <div className="wiki-post-content">
-                    <Link to={post.fields.slug} className="wiki-post-link">
-                      {title}
-                    </Link>
-                    {post.frontmatter.category && (
-                      <span className="wiki-post-category">
-                        {post.frontmatter.category}
-                      </span>
-                    )}
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
-
-          {!showAll && posts.length > 10 && (
-            <div className="wiki-show-all">
-              <button
-                onClick={() => setShowAll(true)}
-                className="wiki-show-all-button"
-              >
-                전체 문서 리스트 보기 ({posts.length} 항목)
-              </button>
-            </div>
-          )}
-
-          {/* 문서 통계 섹션 */}
-          <DocumentStats />
+      <div className="terminal-output">
+        <div className="terminal-command-header">
+          최근 변경된 문서 ({posts.length}개)
         </div>
-      </main>
-    </>
+
+        <div className="terminal-file-list">
+          {displayPosts.map(post => {
+            const title = post.frontmatter.title || post.fields.slug;
+            const updateDate = post.frontmatter.update || post.frontmatter.date;
+            const formattedDate = new Date(updateDate)
+              .toLocaleDateString("ko-KR", {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit",
+              })
+              .replace(/\./g, ".")
+              .replace(/\s/g, "");
+
+            return (
+              <div key={post.fields.slug} className="post-list-item">
+                <span className="post-date">{formattedDate}</span>
+                <span className="post-category">
+                  [{post.frontmatter.category || "misc"}]
+                </span>
+                <h2>
+                  <Link to={post.fields.slug}>{title}</Link>
+                </h2>
+              </div>
+            );
+          })}
+        </div>
+
+        {!showAll && posts.length > 15 && (
+          <div className="terminal-more-section">
+            <div className="terminal-separator-line">
+              ─────────────────────────────────────────────────────────
+            </div>
+            <button
+              onClick={() => setShowAll(true)}
+              className="terminal-more-button"
+            >
+              $ ls -la --show-all | wc -l
+              <br />→ 전체 {posts.length}개 문서 표시
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* 터미널 통계 섹션 */}
+      <div className="terminal-output">
+        <div className="terminal-command-header">$ cat /proc/blog/stats</div>
+        <DocumentStats />
+      </div>
+    </Layout>
   );
 };
 

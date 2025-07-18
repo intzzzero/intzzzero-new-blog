@@ -1,4 +1,4 @@
-/* CSS Custom Properties Definitions */
+/* CSS Custom Properties Definitions - Terminal Theme */
 
 :root {
   --maxWidth-none: "none";
@@ -27,37 +27,57 @@
   --spacing-20: 5rem;
   --spacing-24: 6rem;
   --spacing-32: 8rem;
-  --fontFamily-sans: "MontserratVariable", system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    "Noto Color Emoji";
-  --fontFamily-serif: "Merriweather", "Georgia", Cambria, "Times New Roman",
-    Times, serif;
-  --font-body: var(--fontFamily-serif);
-  --font-heading: var(--fontFamily-sans);
+
+  /* Terminal Monospace Fonts */
+  --fontFamily-mono: "SF Mono", "Monaco", "Inconsolata", "Roboto Mono",
+    "Source Code Pro", "Menlo", "Consolas", "Liberation Mono", monospace;
+  --font-body: var(--fontFamily-mono);
+  --font-heading: var(--fontFamily-mono);
   --fontWeight-normal: 400;
   --fontWeight-bold: 700;
   --fontWeight-black: 900;
   --fontSize-root: 16px;
   --lineHeight-none: 1;
-  --lineHeight-tight: 1.1;
-  --lineHeight-normal: 1.5;
-  --lineHeight-relaxed: 1.625;
-  /* 1.200 Minor Third Type Scale */
-  --fontSize-0: 0.833rem;
-  --fontSize-1: 1rem;
-  --fontSize-2: 1.2rem;
-  --fontSize-3: 1.44rem;
-  --fontSize-4: 1.728rem;
-  --fontSize-5: 2.074rem;
-  --fontSize-6: 2.488rem;
-  --fontSize-7: 2.986rem;
-  --color-primary: #005b99;
-  --color-text: #2e353f;
-  --color-text-light: #4f5969;
-  --color-heading: #1a202c;
-  --color-heading-black: black;
-  --color-accent: #d1dce5;
+  --lineHeight-tight: 1.2;
+  --lineHeight-normal: 1.4;
+  --lineHeight-relaxed: 1.6;
+
+  /* Terminal Font Sizes - Adjusted for monospace readability */
+  --fontSize-0: 0.75rem;
+  --fontSize-1: 0.875rem;
+  --fontSize-2: 1rem;
+  --fontSize-3: 1.125rem;
+  --fontSize-4: 1.25rem;
+  --fontSize-5: 1.5rem;
+  --fontSize-6: 1.875rem;
+  --fontSize-7: 2.25rem;
+
+  /* Terminal Color Palette */
+  --terminal-bg: #000000;
+  --terminal-bg-alt: #1a1a1a;
+  --terminal-fg: #00ff00;
+  --terminal-fg-dim: #00cc00;
+  --terminal-prompt: #ffff00;
+  --terminal-directory: #00ffff;
+  --terminal-link: #87ceeb;
+  --terminal-error: #ff4444;
+  --terminal-warning: #ffaa00;
+  --terminal-comment: #808080;
+  --terminal-white: #ffffff;
+  --terminal-border: #333333;
+  --terminal-hover: #444444;
+  --terminal-selection: #004400;
+
+  /* Applied Terminal Colors */
+  --color-primary: var(--terminal-fg);
+  --color-text: var(--terminal-fg);
+  --color-text-light: var(--terminal-comment);
+  --color-heading: var(--terminal-white);
+  --color-heading-black: var(--terminal-white);
+  --color-accent: var(--terminal-border);
+  --color-background: var(--terminal-bg);
+  --color-link: var(--terminal-directory);
+  --color-link-hover: var(--terminal-white);
 }
 
 /* HTML elements */
@@ -73,12 +93,56 @@ html {
   font-size: var(--fontSize-root);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--terminal-bg);
 }
 
 body {
   font-family: var(--font-body);
-  font-size: var(--fontSize-1);
+  font-size: var(--fontSize-2);
   color: var(--color-text);
+  background: var(--terminal-bg);
+  margin: 0;
+  padding: 0;
+  /* Terminal-like text rendering */
+  letter-spacing: 0.02em;
+  text-rendering: optimizeLegibility;
+}
+
+/* Terminal Footer Styles */
+.terminal-footer {
+  margin-top: var(--spacing-16);
+  padding: var(--spacing-8) var(--spacing-0);
+  border-top: 1px solid var(--terminal-border);
+  font-family: var(--fontFamily-mono);
+}
+
+.terminal-footer-content {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-4);
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--terminal-bg-alt);
+  border: 1px solid var(--terminal-border);
+  border-radius: 4px;
+}
+
+.terminal-footer-prompt {
+  color: var(--terminal-white);
+  font-weight: bold;
+}
+
+.terminal-footer-text {
+  color: var(--terminal-fg);
+  font-size: var(--fontSize-1);
+}
+
+.terminal-footer-signature {
+  text-align: center;
+  color: var(--terminal-comment);
+  font-size: var(--fontSize-0);
+  line-height: 1.2;
+  font-family: var(--fontFamily-mono);
 }
 
 footer {
@@ -225,24 +289,181 @@ table thead tr th {
   border-bottom: 1px solid var(--color-accent);
 }
 
-/* Link */
+/* Terminal Link Styles */
 
 a {
-  color: var(--color-primary);
+  color: var(--terminal-directory);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+  position: relative;
 }
 
 a:hover,
 a:focus {
+  color: var(--terminal-white);
+  background: var(--terminal-selection);
+  border-bottom: 1px solid var(--terminal-directory);
   text-decoration: none;
+}
+
+/* Terminal-style link underline effect */
+a::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--terminal-directory);
+  transition: width 0.3s ease;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* Terminal Header Styles */
+.terminal-header {
+  margin-bottom: var(--spacing-8);
+  font-family: var(--fontFamily-mono);
+}
+
+.terminal-prompt-line {
+  background: var(--terminal-bg-alt);
+  padding: var(--spacing-3) var(--spacing-4);
+  border: 1px solid var(--terminal-border);
+  border-radius: 4px;
+  margin-bottom: var(--spacing-2);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  flex-wrap: wrap;
+}
+
+.terminal-user {
+  color: var(--terminal-prompt);
+  font-weight: bold;
+}
+
+.terminal-separator {
+  color: var(--terminal-white);
+}
+
+.terminal-path {
+  color: var(--terminal-directory);
+  font-weight: bold;
+}
+
+.terminal-prompt {
+  color: var(--terminal-white);
+  margin-left: var(--spacing-1);
+  margin-right: var(--spacing-2);
+}
+
+.terminal-command {
+  color: var(--terminal-fg);
+  margin-right: var(--spacing-2);
+}
+
+.terminal-time {
+  color: var(--terminal-comment);
+  font-size: var(--fontSize-0);
+  margin-left: auto;
+}
+
+.terminal-nav {
+  margin-bottom: var(--spacing-4);
+}
+
+.terminal-nav-line {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  padding: var(--spacing-2) 0;
+}
+
+.terminal-output-prefix {
+  color: var(--terminal-comment);
+  font-size: var(--fontSize-0);
+  font-family: var(--fontFamily-mono);
+  min-width: 80px;
+}
+
+.terminal-nav-items {
+  display: flex;
+  gap: var(--spacing-6);
+  flex-wrap: wrap;
+}
+
+.terminal-nav-link {
+  color: var(--terminal-directory) !important;
+  text-decoration: none !important;
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: 3px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  font-weight: bold;
+  border-bottom: none !important;
+}
+
+.terminal-nav-link::after {
+  display: none;
+}
+
+.terminal-nav-link:hover {
+  background: var(--terminal-selection) !important;
+  color: var(--terminal-white) !important;
+  transform: translateY(-1px);
+}
+
+.terminal-nav-icon {
+  font-size: var(--fontSize-0);
+}
+
+.terminal-separator-line {
+  color: var(--terminal-border);
+  font-family: var(--fontFamily-mono);
+  font-size: var(--fontSize-0);
+  text-align: center;
+  margin: var(--spacing-4) 0;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 /* Custom classes */
 
 .global-wrapper {
-  margin: var(--spacing-5) auto;
+  margin: 0 auto;
   max-width: var(--maxWidth-wrapper);
-  padding: var(--spacing-10) var(--spacing-5);
-  border: 1px solid #0000be;
+  padding: var(--spacing-8) var(--spacing-5);
+  background: var(--terminal-bg);
+  color: var(--terminal-fg);
+  min-height: 100vh;
+  /* Terminal window styling */
+  border: 2px solid var(--terminal-border);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+  position: relative;
+  margin-top: var(--spacing-4);
+  margin-bottom: var(--spacing-4);
+}
+
+/* Terminal window title bar */
+.global-wrapper::before {
+  content: "● ● ●   intzzzero@terminal:~/blog";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--terminal-border);
+  color: var(--terminal-comment);
+  padding: var(--spacing-2) var(--spacing-4);
+  font-size: var(--fontSize-0);
+  border-radius: 6px 6px 0 0;
+  border-bottom: 1px solid var(--terminal-hover);
 }
 
 .global-wrapper[data-is-root-path="true"] .bio {
@@ -258,9 +479,42 @@ a:focus {
   margin: 0;
 }
 
+/* Terminal-style post list */
+.terminal-output {
+  background: var(--terminal-bg-alt);
+  border: 1px solid var(--terminal-border);
+  border-radius: 4px;
+  padding: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+}
+
+.terminal-command-header {
+  color: var(--terminal-prompt);
+  font-family: var(--fontFamily-mono);
+  margin-bottom: var(--spacing-4);
+  padding-bottom: var(--spacing-2);
+  border-bottom: 1px solid var(--terminal-border);
+}
+
+.terminal-command-header::before {
+  content: "$ cat recent_posts.md";
+  display: block;
+  color: var(--terminal-fg);
+  margin-bottom: var(--spacing-2);
+}
+
 .post-list-item {
-  margin-bottom: var(--spacing-8);
-  margin-top: var(--spacing-8);
+  margin-bottom: var(--spacing-2);
+  padding: var(--spacing-2) 0;
+  border-bottom: 1px solid var(--terminal-border);
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-4);
+  font-family: var(--fontFamily-mono);
+}
+
+.post-list-item:last-child {
+  border-bottom: none;
 }
 
 .post-list-item p {
@@ -268,14 +522,367 @@ a:focus {
 }
 
 .post-list-item h2 {
-  font-size: var(--fontSize-4);
-  color: var(--color-primary);
-  margin-bottom: var(--spacing-2);
-  margin-top: var(--spacing-0);
+  font-size: var(--fontSize-2);
+  color: var(--terminal-directory);
+  margin: 0;
+  flex: 1;
+  font-weight: bold;
+}
+
+.post-list-item h2 a {
+  color: var(--terminal-directory) !important;
+  border-bottom: none !important;
+}
+
+.post-list-item h2 a:hover {
+  color: var(--terminal-white) !important;
+  background: var(--terminal-selection) !important;
+}
+
+.post-list-item h2 a::after {
+  display: none;
+}
+
+.post-date {
+  color: var(--terminal-comment);
+  font-size: var(--fontSize-0);
+  font-family: var(--fontFamily-mono);
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
+.post-category {
+  color: var(--terminal-warning);
+  font-size: var(--fontSize-0);
+  background: var(--terminal-bg);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  border: 1px solid var(--terminal-border);
+  min-width: 60px;
+  text-align: center;
+  flex-shrink: 0;
 }
 
 .post-list-item header {
+  margin-bottom: var(--spacing-0);
+  flex: 1;
+}
+
+/* Terminal More Section */
+.terminal-more-section {
+  margin-top: var(--spacing-4);
+  text-align: center;
+}
+
+.terminal-more-button {
+  background: var(--terminal-bg-alt);
+  border: 1px solid var(--terminal-border);
+  color: var(--terminal-fg);
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: 4px;
+  font-family: var(--fontFamily-mono);
+  font-size: var(--fontSize-1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1.4;
+}
+
+.terminal-more-button:hover {
+  background: var(--terminal-selection);
+  color: var(--terminal-white);
+  border-color: var(--terminal-directory);
+  transform: translateY(-1px);
+}
+
+/* Terminal File List */
+.terminal-file-list {
+  background: var(--terminal-bg);
+  padding: var(--spacing-2);
+  border-radius: 4px;
+  border: 1px solid var(--terminal-border);
+}
+
+/* Terminal Blog Post Styles */
+.terminal-file-header {
   margin-bottom: var(--spacing-4);
+  padding: var(--spacing-3) 0;
+  border-bottom: 1px solid var(--terminal-border);
+}
+
+.terminal-file-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-2);
+}
+
+.terminal-file-prompt {
+  color: var(--terminal-white);
+  font-weight: bold;
+}
+
+.terminal-file-command {
+  color: var(--terminal-fg);
+  font-weight: bold;
+}
+
+.terminal-file-meta {
+  display: flex;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: var(--fontSize-0);
+}
+
+.terminal-file-size {
+  color: var(--terminal-comment);
+}
+
+.terminal-file-category {
+  color: var(--terminal-warning);
+  background: var(--terminal-bg-alt);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  border: 1px solid var(--terminal-border);
+}
+
+.terminal-file-date {
+  color: var(--terminal-directory);
+  font-family: var(--fontFamily-mono);
+}
+
+.terminal-file-update {
+  color: var(--terminal-comment);
+  font-style: italic;
+}
+
+.terminal-file-separator {
+  color: var(--terminal-border);
+  font-family: var(--fontFamily-mono);
+  font-size: var(--fontSize-0);
+  text-align: center;
+  margin: var(--spacing-4) 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.terminal-article {
+  background: var(--terminal-bg);
+  color: var(--terminal-fg);
+  font-family: var(--fontFamily-mono);
+}
+
+.terminal-article-content {
+  line-height: var(--lineHeight-relaxed);
+  padding: var(--spacing-4) 0;
+}
+
+.terminal-article-content h1,
+.terminal-article-content h2,
+.terminal-article-content h3,
+.terminal-article-content h4,
+.terminal-article-content h5,
+.terminal-article-content h6 {
+  color: var(--terminal-white);
+  font-family: var(--fontFamily-mono);
+  font-weight: bold;
+  margin-top: var(--spacing-8);
+  margin-bottom: var(--spacing-4);
+  border-bottom: 1px solid var(--terminal-border);
+  padding-bottom: var(--spacing-2);
+}
+
+.terminal-article-content h1::before {
+  content: "# ";
+  color: var(--terminal-prompt);
+}
+.terminal-article-content h2::before {
+  content: "## ";
+  color: var(--terminal-prompt);
+}
+.terminal-article-content h3::before {
+  content: "### ";
+  color: var(--terminal-prompt);
+}
+.terminal-article-content h4::before {
+  content: "#### ";
+  color: var(--terminal-prompt);
+}
+.terminal-article-content h5::before {
+  content: "##### ";
+  color: var(--terminal-prompt);
+}
+.terminal-article-content h6::before {
+  content: "###### ";
+  color: var(--terminal-prompt);
+}
+
+.terminal-article-content p {
+  margin-bottom: var(--spacing-4);
+  color: var(--terminal-fg);
+}
+
+.terminal-article-content code {
+  background: var(--terminal-bg-alt);
+  color: var(--terminal-directory);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  border: 1px solid var(--terminal-border);
+  font-family: var(--fontFamily-mono);
+}
+
+.terminal-article-content pre {
+  background: var(--terminal-bg-alt);
+  border: 1px solid var(--terminal-border);
+  border-radius: 4px;
+  padding: var(--spacing-4);
+  overflow-x: auto;
+  margin: var(--spacing-4) 0;
+}
+
+.terminal-article-content pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--terminal-fg);
+}
+
+.terminal-article-content blockquote {
+  border-left: 3px solid var(--terminal-directory);
+  padding-left: var(--spacing-4);
+  margin: var(--spacing-4) 0;
+  color: var(--terminal-comment);
+  font-style: italic;
+  background: var(--terminal-bg-alt);
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: 0 4px 4px 0;
+}
+
+.terminal-article-content blockquote::before {
+  content: "> ";
+  color: var(--terminal-directory);
+  font-weight: bold;
+}
+
+.terminal-article-content ul,
+.terminal-article-content ol {
+  margin: var(--spacing-4) 0;
+  padding-left: var(--spacing-6);
+}
+
+.terminal-article-content li {
+  margin-bottom: var(--spacing-2);
+  color: var(--terminal-fg);
+}
+
+.terminal-article-content li::marker {
+  color: var(--terminal-directory);
+}
+
+/* Terminal Backlinks */
+.terminal-backlinks {
+  background: var(--terminal-bg);
+  padding: var(--spacing-2);
+  border-radius: 4px;
+  border: 1px solid var(--terminal-border);
+}
+
+.terminal-backlinks-header {
+  color: var(--terminal-comment);
+  font-size: var(--fontSize-1);
+  margin-bottom: var(--spacing-3);
+  padding-bottom: var(--spacing-2);
+  border-bottom: 1px solid var(--terminal-border);
+}
+
+.terminal-backlinks-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.terminal-backlink-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2);
+  background: var(--terminal-bg-alt);
+  border-radius: 3px;
+  font-size: var(--fontSize-1);
+}
+
+.terminal-backlink-file {
+  color: var(--terminal-comment);
+  font-size: var(--fontSize-0);
+  min-width: 100px;
+}
+
+.terminal-backlink-link {
+  color: var(--terminal-directory) !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  font-weight: bold;
+}
+
+.terminal-backlink-link::after {
+  display: none;
+}
+
+.terminal-backlink-link:hover {
+  color: var(--terminal-white) !important;
+  background: var(--terminal-selection) !important;
+}
+
+.terminal-backlink-meta {
+  margin-left: auto;
+  display: flex;
+  gap: var(--spacing-2);
+  align-items: center;
+  font-size: var(--fontSize-0);
+  color: var(--terminal-comment);
+}
+
+.terminal-backlink-date {
+  color: var(--terminal-comment);
+}
+
+/* Terminal Navigation Section */
+.terminal-nav-section {
+  background: var(--terminal-bg);
+  padding: var(--spacing-3);
+  border-radius: 4px;
+  border: 1px solid var(--terminal-border);
+}
+
+.terminal-nav-buttons {
+  display: flex;
+  gap: var(--spacing-4);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.terminal-nav-button {
+  background: var(--terminal-bg-alt);
+  border: 1px solid var(--terminal-border);
+  color: var(--terminal-directory) !important;
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: 4px;
+  text-decoration: none !important;
+  font-family: var(--fontFamily-mono);
+  font-weight: bold;
+  transition: all 0.2s ease;
+  border-bottom: none !important;
+}
+
+.terminal-nav-button::after {
+  display: none;
+}
+
+.terminal-nav-button:hover {
+  background: var(--terminal-selection) !important;
+  color: var(--terminal-white) !important;
+  border-color: var(--terminal-directory);
+  transform: translateY(-1px);
 }
 
 .header-link-home {
@@ -320,7 +927,79 @@ a:focus {
 
 /* Media queries */
 
+/* Terminal Mobile Responsive */
 @media (max-width: 42rem) {
+  .global-wrapper {
+    margin-top: var(--spacing-2);
+    margin-bottom: var(--spacing-2);
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .global-wrapper::before {
+    padding: var(--spacing-1) var(--spacing-2);
+    font-size: var(--fontSize-0);
+    content: "● ● ●   intzzzero@mobile:~/blog";
+  }
+
+  .terminal-prompt-line {
+    flex-direction: column;
+    gap: var(--spacing-2);
+    text-align: center;
+  }
+
+  .terminal-time {
+    margin-left: 0;
+  }
+
+  .terminal-nav-line {
+    flex-direction: column;
+    gap: var(--spacing-2);
+  }
+
+  .terminal-output-prefix {
+    text-align: center;
+    min-width: auto;
+  }
+
+  .terminal-nav-items {
+    justify-content: center;
+    gap: var(--spacing-3);
+  }
+
+  .post-list-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-2);
+  }
+
+  .post-date,
+  .post-category {
+    min-width: auto;
+  }
+
+  .terminal-file-meta {
+    flex-direction: column;
+    gap: var(--spacing-2);
+    align-items: flex-start;
+  }
+
+  .terminal-nav-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .terminal-backlink-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-1);
+  }
+
+  .terminal-backlink-meta {
+    margin-left: 0;
+  }
+
   blockquote {
     padding: var(--spacing-0) var(--spacing-0) var(--spacing-0) var(--spacing-4);
     margin-left: var(--spacing-0);
@@ -1397,37 +2076,8 @@ input:focus {
   flex-wrap: wrap;
 }
 
-/* Mermaid Diagram Styles */
-.gatsby-remark-mermaid {
-  margin: 2rem 0;
-  text-align: center;
-  overflow-x: auto;
-  /* 가로 스크롤 허용 */
-}
-
-.gatsby-remark-mermaid svg {
-  max-width: 100%;
-  height: auto;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  padding: 1.5rem;
-  background: #fafafa;
-  /* 최소 너비 보장 */
-  min-width: 300px;
-  /* 텍스트 잘림 방지 */
-  overflow: visible;
-}
-
-/* Mermaid 텍스트 스타일 개선 */
-.gatsby-remark-mermaid .node text,
-.gatsby-remark-mermaid .edgeLabel text {
-  font-size: 14px !important;
-  font-family: Arial, sans-serif !important;
-  fill: #333 !important;
-  /* 한국어 텍스트 렌더링 최적화 */
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-}
+/* OLD Mermaid Styles - REMOVED for Terminal Theme */
+/* These styles have been moved to Terminal Mermaid section below */
 
 /* 모바일 환경에서 mermaid 다이어그램 최적화 */
 @media (max-width: 42rem) {
@@ -1505,4 +2155,719 @@ input:focus {
     align-items: flex-start;
     gap: 0.25rem;
   }
+}
+
+/* Terminal Code Highlighting - Prism.js Override */
+
+/* Terminal-style code blocks */
+.gatsby-highlight {
+  margin-bottom: var(--spacing-8);
+  background: var(--terminal-bg-alt) !important;
+  border: 1px solid var(--terminal-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.gatsby-highlight pre[class*="language-"] {
+  background: var(--terminal-bg-alt) !important;
+  color: var(--terminal-fg) !important;
+  font-family: var(--fontFamily-mono) !important;
+  font-size: var(--fontSize-1) !important;
+  line-height: var(--lineHeight-normal) !important;
+  margin: 0 !important;
+  padding: var(--spacing-4) !important;
+  overflow-x: auto;
+  border: none !important;
+}
+
+.gatsby-highlight code[class*="language-"] {
+  background: none !important;
+  color: var(--terminal-fg) !important;
+  font-family: var(--fontFamily-mono) !important;
+  font-size: var(--fontSize-1) !important;
+  text-shadow: none !important;
+}
+
+/* Terminal color scheme for syntax highlighting */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: var(--terminal-comment) !important;
+  font-style: italic;
+}
+
+.token.punctuation {
+  color: var(--terminal-comment) !important;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: var(--terminal-warning) !important;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: var(--terminal-directory) !important;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: var(--terminal-fg) !important;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: var(--terminal-prompt) !important;
+  font-weight: bold;
+}
+
+.token.function,
+.token.class-name {
+  color: var(--terminal-link) !important;
+  font-weight: bold;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: var(--terminal-error) !important;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+/* Terminal-style inline code */
+:not(pre) > code[class*="language-"] {
+  background: var(--terminal-bg-alt) !important;
+  color: var(--terminal-directory) !important;
+  padding: 0.1rem 0.3rem !important;
+  border-radius: 3px !important;
+  border: 1px solid var(--terminal-border) !important;
+  font-family: var(--fontFamily-mono) !important;
+  font-size: var(--fontSize-1) !important;
+  white-space: normal !important;
+}
+
+/* Terminal Mermaid Diagrams */
+.gatsby-remark-mermaid {
+  margin: var(--spacing-8) 0;
+  text-align: center;
+  overflow-x: auto;
+  background: var(--terminal-bg-alt);
+  border: 1px solid var(--terminal-border);
+  border-radius: 4px;
+  padding: var(--spacing-4);
+}
+
+.gatsby-remark-mermaid svg {
+  max-width: 100%;
+  height: auto;
+  background: var(--terminal-bg) !important;
+  border: 1px solid var(--terminal-border);
+  border-radius: 4px;
+  padding: var(--spacing-4);
+  min-width: 300px;
+  overflow: visible;
+}
+
+/* Terminal Mermaid theme colors - 가장 강력한 강제 적용 */
+.gatsby-remark-mermaid .node rect,
+.gatsby-remark-mermaid .node circle,
+.gatsby-remark-mermaid .node ellipse,
+.gatsby-remark-mermaid .node polygon,
+.gatsby-remark-mermaid [style*="fill"],
+.gatsby-remark-mermaid svg g.nodes rect,
+.gatsby-remark-mermaid svg g.nodes circle,
+.gatsby-remark-mermaid svg g.nodes ellipse,
+.gatsby-remark-mermaid svg g.nodes polygon,
+.gatsby-remark-mermaid svg [class*="node"] > rect,
+.gatsby-remark-mermaid svg [class*="node"] > circle,
+.gatsby-remark-mermaid svg [class*="node"] > ellipse,
+.gatsby-remark-mermaid svg [class*="node"] > polygon {
+  fill: var(--terminal-bg-alt) !important;
+  stroke: var(--terminal-directory) !important;
+  stroke-width: 2px !important;
+}
+
+/* 특정 스타일이 지정된 노드들도 터미널 테마로 강제 변경 */
+.gatsby-remark-mermaid .node[style*="fill:#e1f5fe"],
+.gatsby-remark-mermaid .node[style*="fill:#f3e5f5"],
+.gatsby-remark-mermaid .node[style*="fill:#fff3e0"],
+.gatsby-remark-mermaid .node[style*="fill:#ffebee"],
+.gatsby-remark-mermaid .node[style*="fill:#c8e6c9"],
+.gatsby-remark-mermaid .node[style*="fill:#fff9c4"],
+.gatsby-remark-mermaid .node[style*="fill:#ffcdd2"] {
+  fill: var(--terminal-bg-alt) !important;
+  stroke: var(--terminal-accent) !important;
+}
+
+/* 텍스트 요소들 */
+.gatsby-remark-mermaid .node text,
+.gatsby-remark-mermaid .edgeLabel text,
+.gatsby-remark-mermaid text {
+  font-size: 14px !important;
+  font-family: var(--fontFamily-mono) !important;
+  fill: var(--terminal-fg) !important;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 연결선과 화살표 */
+.gatsby-remark-mermaid .edgePath path,
+.gatsby-remark-mermaid .flowchart-link,
+.gatsby-remark-mermaid path {
+  stroke: var(--terminal-directory) !important;
+  stroke-width: 2px !important;
+  fill: none !important;
+}
+
+.gatsby-remark-mermaid .arrowhead,
+.gatsby-remark-mermaid marker path {
+  fill: var(--terminal-directory) !important;
+  stroke: var(--terminal-directory) !important;
+}
+
+/* 서브그래프 스타일 */
+.gatsby-remark-mermaid .cluster rect {
+  fill: var(--terminal-bg) !important;
+  stroke: var(--terminal-border) !important;
+  stroke-width: 1px !important;
+  stroke-dasharray: 5, 5 !important;
+}
+
+.gatsby-remark-mermaid .cluster text {
+  fill: var(--terminal-accent) !important;
+  font-family: var(--fontFamily-mono) !important;
+  font-size: 12px !important;
+  font-weight: bold !important;
+}
+
+/* 점선 연결 스타일 */
+.gatsby-remark-mermaid .edgePath path[stroke-dasharray] {
+  stroke: var(--terminal-comment) !important;
+  stroke-dasharray: 5, 5 !important;
+}
+
+/* flowchart 다이어그램 전용 스타일 */
+.gatsby-remark-mermaid .flowchart .node0,
+.gatsby-remark-mermaid .flowchart .node1,
+.gatsby-remark-mermaid .flowchart .node2,
+.gatsby-remark-mermaid .flowchart .node3,
+.gatsby-remark-mermaid .flowchart .node4,
+.gatsby-remark-mermaid .flowchart .node5,
+.gatsby-remark-mermaid .flowchart .node6 {
+  fill: var(--terminal-bg-alt) !important;
+  stroke: var(--terminal-directory) !important;
+}
+
+/* 특별한 강조 노드들 (Tier 1, 2, 3 등) */
+.gatsby-remark-mermaid .node.tier-success {
+  fill: var(--terminal-bg-alt) !important;
+  stroke: var(--terminal-fg) !important;
+  stroke-width: 3px !important;
+}
+
+.gatsby-remark-mermaid .node.tier-warning {
+  fill: var(--terminal-bg-alt) !important;
+  stroke: var(--terminal-accent) !important;
+  stroke-width: 3px !important;
+}
+
+.gatsby-remark-mermaid .node.tier-error {
+  fill: var(--terminal-bg-alt) !important;
+  stroke: var(--terminal-comment) !important;
+  stroke-width: 3px !important;
+}
+
+/* 모든 Mermaid 요소에 대한 강제 터미널 스타일 적용 */
+.gatsby-remark-mermaid svg * {
+  font-family: var(--fontFamily-mono) !important;
+}
+
+.gatsby-remark-mermaid svg [fill]:not([fill="none"]):not([fill="transparent"]) {
+  fill: var(--terminal-bg-alt) !important;
+}
+
+.gatsby-remark-mermaid
+  svg
+  [stroke]:not([stroke="none"]):not([stroke="transparent"]) {
+  stroke: var(--terminal-directory) !important;
+}
+
+.gatsby-remark-mermaid svg text {
+  fill: var(--terminal-fg) !important;
+}
+
+/* 배경 강제 적용 */
+.gatsby-remark-mermaid svg {
+  background: var(--terminal-bg) !important;
+}
+
+/* 극강의 강제 적용 - 모든 인라인 스타일 덮어쓰기 */
+.gatsby-remark-mermaid svg * {
+  color: var(--terminal-fg) !important;
+}
+
+.gatsby-remark-mermaid
+  svg
+  *[fill]:not([fill="none"]):not([fill="transparent"]) {
+  fill: var(--terminal-bg-alt) !important;
+}
+
+.gatsby-remark-mermaid
+  svg
+  *[stroke]:not([stroke="none"]):not([stroke="transparent"]) {
+  stroke: var(--terminal-directory) !important;
+}
+
+/* 특정 색상으로 지정된 모든 요소 강제 변경 */
+.gatsby-remark-mermaid svg *[style*="fill:#e1f5fe"],
+.gatsby-remark-mermaid svg *[style*="fill:#f3e5f5"],
+.gatsby-remark-mermaid svg *[style*="fill:#fff3e0"],
+.gatsby-remark-mermaid svg *[style*="fill:#ffebee"],
+.gatsby-remark-mermaid svg *[style*="fill:#c8e6c9"],
+.gatsby-remark-mermaid svg *[style*="fill:#fff9c4"],
+.gatsby-remark-mermaid svg *[style*="fill:#ffcdd2"],
+.gatsby-remark-mermaid svg *[style*="fill:rgb"],
+.gatsby-remark-mermaid svg *[style*="fill: rgb"] {
+  fill: var(--terminal-bg-alt) !important;
+  stroke: var(--terminal-directory) !important;
+}
+
+/* Terminal Mermaid error styling */
+.mermaid-error {
+  border: 2px dashed var(--terminal-error) !important;
+  border-radius: 4px;
+  padding: var(--spacing-4);
+  margin: var(--spacing-4) 0;
+  background: var(--terminal-bg-alt) !important;
+  color: var(--terminal-error) !important;
+  font-family: var(--fontFamily-mono);
+}
+
+.mermaid-error p {
+  margin: 0 0 var(--spacing-2) 0;
+  font-weight: bold;
+  color: var(--terminal-error) !important;
+}
+
+.mermaid-error summary {
+  cursor: pointer;
+  font-weight: normal;
+  color: var(--terminal-directory) !important;
+}
+
+.mermaid-error pre {
+  background: var(--terminal-bg) !important;
+  border: 1px solid var(--terminal-border) !important;
+  border-radius: 4px;
+  padding: var(--spacing-2);
+  margin-top: var(--spacing-2);
+  overflow-x: auto;
+  font-size: var(--fontSize-1);
+  color: var(--terminal-fg) !important;
+  font-family: var(--fontFamily-mono);
+}
+
+/* Terminal Table of Contents (TOC) */
+.reading-toc {
+  position: fixed;
+  right: var(--spacing-4);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 280px;
+  max-height: 70vh;
+  overflow-y: auto;
+  background: var(--terminal-bg-alt) !important;
+  border: 1px solid var(--terminal-border) !important;
+  border-radius: 4px;
+  padding: var(--spacing-4);
+  font-family: var(--fontFamily-mono);
+  z-index: 1050; /* 프로그레스보다 낮게 설정 */
+  box-shadow: 0 4px 12px rgba(0, 255, 255, 0.1) !important;
+}
+
+.reading-toc-title {
+  color: var(--terminal-white) !important;
+  font-size: var(--fontSize-2) !important;
+  font-weight: bold;
+  margin-bottom: var(--spacing-3) !important;
+  padding-bottom: var(--spacing-2);
+  border-bottom: 1px solid var(--terminal-border);
+  font-family: var(--fontFamily-mono);
+}
+
+.reading-toc-title::before {
+  content: "$ cat table_of_contents.md";
+  display: block;
+  color: var(--terminal-comment);
+  font-size: var(--fontSize-0);
+  margin-bottom: var(--spacing-2);
+}
+
+/* Terminal TOC Header - 기존 wiki 스타일 오버라이드 */
+.reading-toc-header {
+  padding: var(--spacing-3) var(--spacing-4) !important;
+  background: var(--terminal-bg) !important;
+  border-bottom: 1px solid var(--terminal-border) !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  border-radius: 4px 4px 0 0 !important;
+}
+
+.reading-toc-header .reading-toc-title {
+  font-size: var(--fontSize-1) !important;
+  font-weight: bold !important;
+  color: var(--terminal-white) !important;
+  font-family: var(--fontFamily-mono) !important;
+}
+
+.reading-toc-top {
+  background: var(--terminal-bg-alt) !important;
+  border: 1px solid var(--terminal-border) !important;
+  color: var(--terminal-directory) !important;
+  font-size: var(--fontSize-1) !important;
+  cursor: pointer !important;
+  padding: var(--spacing-1) var(--spacing-2) !important;
+  border-radius: 3px !important;
+  font-family: var(--fontFamily-mono) !important;
+  transition: all 0.2s ease !important;
+}
+
+.reading-toc-top:hover {
+  background: var(--terminal-selection) !important;
+  color: var(--terminal-white) !important;
+  border-color: var(--terminal-directory) !important;
+}
+
+/* Terminal TOC List - 기존 wiki 스타일 오버라이드 */
+.reading-toc-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow-y: auto !important;
+  flex: 1 !important;
+  background: var(--terminal-bg-alt) !important;
+}
+
+.reading-toc-item {
+  margin: 0 !important;
+  padding: 0 !important;
+  border-bottom: 1px solid var(--terminal-border) !important;
+}
+
+.reading-toc-item:last-child {
+  border-bottom: none !important;
+}
+
+.reading-toc-link {
+  display: block;
+  padding: var(--spacing-1) var(--spacing-2) !important;
+  color: var(--terminal-fg) !important;
+  text-decoration: none !important;
+  font-size: var(--fontSize-1) !important;
+  border-left: 2px solid transparent;
+  transition: all 0.2s ease;
+  font-family: var(--fontFamily-mono);
+  line-height: var(--lineHeight-normal);
+}
+
+.reading-toc-item.level-1 .reading-toc-link {
+  padding-left: var(--spacing-2) !important;
+  font-weight: bold;
+  color: var(--terminal-white) !important;
+}
+
+.reading-toc-item.level-1 .reading-toc-link::before {
+  content: "# ";
+  color: var(--terminal-prompt);
+}
+
+.reading-toc-item.level-2 .reading-toc-link {
+  padding-left: var(--spacing-4) !important;
+  color: var(--terminal-directory) !important;
+}
+
+.reading-toc-item.level-2 .reading-toc-link::before {
+  content: "## ";
+  color: var(--terminal-prompt);
+}
+
+.reading-toc-item.level-3 .reading-toc-link {
+  padding-left: var(--spacing-6) !important;
+  font-size: var(--fontSize-0) !important;
+  color: var(--terminal-comment) !important;
+}
+
+.reading-toc-item.level-3 .reading-toc-link::before {
+  content: "### ";
+  color: var(--terminal-prompt);
+}
+
+.reading-toc-item.level-4 .reading-toc-link,
+.reading-toc-item.level-5 .reading-toc-link,
+.reading-toc-item.level-6 .reading-toc-link {
+  padding-left: calc(var(--spacing-6) + var(--spacing-2)) !important;
+  font-size: var(--fontSize-0) !important;
+  color: var(--terminal-comment) !important;
+}
+
+.reading-toc-link:hover {
+  background: var(--terminal-selection) !important;
+  color: var(--terminal-white) !important;
+  border-left-color: var(--terminal-directory);
+}
+
+.reading-toc-item.active .reading-toc-link {
+  background: var(--terminal-selection) !important;
+  color: var(--terminal-white) !important;
+  border-left-color: var(--terminal-directory) !important;
+  font-weight: bold;
+}
+
+/* Terminal Reading Progress Container - 더 높은 z-index로 목차 위에 표시 */
+.reading-progress-container {
+  position: fixed !important;
+  right: var(--spacing-4) !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 1100 !important; /* 목차보다 높은 z-index */
+  display: flex !important;
+  flex-direction: column !important;
+  gap: var(--spacing-4) !important;
+}
+
+/* Terminal Reading Progress Bar */
+.reading-progress-bar {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 3px !important;
+  background: var(--terminal-bg-alt) !important;
+  z-index: 1200 !important; /* 가장 높은 z-index */
+  border-bottom: 1px solid var(--terminal-border) !important;
+}
+
+.reading-progress-fill {
+  height: 100% !important;
+  background: var(--terminal-directory) !important;
+  transition: width 0.2s ease !important;
+  box-shadow: 0 0 5px var(--terminal-directory) !important;
+}
+
+/* Terminal Reading Progress Info */
+.reading-progress-info {
+  background: var(--terminal-bg-alt) !important;
+  border: 1px solid var(--terminal-border) !important;
+  border-radius: 4px;
+  padding: var(--spacing-2) var(--spacing-3);
+  text-align: center;
+  font-size: var(--fontSize-0) !important;
+  font-weight: bold;
+  color: var(--terminal-directory) !important;
+  font-family: var(--fontFamily-mono);
+  min-width: 60px;
+  align-self: center;
+  z-index: 1150 !important; /* 목차와 프로그레스 바 사이 z-index */
+  box-shadow: 0 2px 8px rgba(0, 255, 255, 0.2) !important;
+}
+
+/* Terminal Animations */
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes cursor-blink {
+  0%,
+  50% {
+    border-color: var(--terminal-fg);
+  }
+  51%,
+  100% {
+    border-color: transparent;
+  }
+}
+
+.terminal-typewriter {
+  overflow: hidden;
+  border-right: 2px solid var(--terminal-fg);
+  white-space: nowrap;
+  animation: typewriter 2s steps(40, end), cursor-blink 0.75s step-end infinite;
+}
+
+.terminal-loading {
+  animation: blink 1s infinite;
+}
+
+/* Terminal Document Stats */
+.terminal-stats {
+  background: var(--terminal-bg-alt);
+  border: 1px solid var(--terminal-border);
+  border-radius: 4px;
+  padding: var(--spacing-4);
+  margin-top: var(--spacing-6);
+  font-family: var(--fontFamily-mono);
+}
+
+.terminal-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-3);
+  margin: var(--spacing-4) 0;
+}
+
+.terminal-stat-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-2);
+  background: var(--terminal-bg);
+  border: 1px solid var(--terminal-border);
+  border-radius: 4px;
+  font-family: var(--fontFamily-mono);
+  font-size: var(--fontSize-1);
+}
+
+.terminal-categories-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.terminal-category-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-2);
+  background: var(--terminal-bg);
+  border: 1px solid var(--terminal-border);
+  border-radius: 4px;
+  font-family: var(--fontFamily-mono);
+  transition: all 0.2s ease;
+}
+
+.terminal-category-item:hover {
+  background: var(--terminal-selection);
+  border-color: var(--terminal-directory);
+}
+
+.terminal-category-item:hover a {
+  color: var(--terminal-white) !important;
+}
+
+/* Mobile optimizations for terminal theme */
+@media (max-width: 42rem) {
+  .terminal-stats-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-2);
+  }
+
+  .terminal-stat-line {
+    padding: var(--spacing-1) var(--spacing-2);
+    font-size: var(--fontSize-0);
+  }
+
+  .terminal-category-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-1);
+  }
+
+  .gatsby-remark-mermaid {
+    margin: var(--spacing-4) calc(-1 * var(--spacing-4));
+    border-radius: 0;
+  }
+
+  .gatsby-remark-mermaid svg {
+    width: 100%;
+    min-width: 280px;
+    padding: var(--spacing-3);
+  }
+
+  .gatsby-remark-mermaid .node text,
+  .gatsby-remark-mermaid .edgeLabel text {
+    font-size: 12px !important;
+  }
+
+  .reading-toc {
+    display: none;
+  }
+
+  .reading-progress-container {
+    z-index: 1100 !important;
+  }
+
+  .reading-progress-bar {
+    z-index: 1200 !important;
+  }
+
+  .reading-progress-info {
+    z-index: 1150 !important;
+  }
+
+  .gatsby-highlight pre[class*="language-"] {
+    padding: var(--spacing-3) !important;
+    font-size: var(--fontSize-0) !important;
+  }
+}
+
+/* FINAL OVERRIDE - 모든 mermaid 색상을 강제로 다크 테마로 변경 */
+html body .gatsby-remark-mermaid svg g.output g.clusters g.cluster rect,
+html body .gatsby-remark-mermaid svg g.output g.edgePaths g.edgePath path,
+html body .gatsby-remark-mermaid svg g.output g.edgeLabels g.edgeLabel g,
+html body .gatsby-remark-mermaid svg g.output g.nodes g.node,
+html body .gatsby-remark-mermaid svg g.output g.nodes g.node rect,
+html body .gatsby-remark-mermaid svg g.output g.nodes g.node circle,
+html body .gatsby-remark-mermaid svg g.output g.nodes g.node ellipse,
+html body .gatsby-remark-mermaid svg g.output g.nodes g.node polygon {
+  fill: var(--terminal-bg-alt) !important;
+  stroke: var(--terminal-directory) !important;
+  stroke-width: 2px !important;
+}
+
+html body .gatsby-remark-mermaid svg text {
+  fill: var(--terminal-fg) !important;
+  font-family: var(--fontFamily-mono) !important;
 }

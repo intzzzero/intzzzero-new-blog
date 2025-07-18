@@ -58,69 +58,171 @@ const DocumentStats = () => {
   const avgReadTime = Math.round(totalReadTime / totalPosts);
 
   return (
-    <div className="document-stats">
-      <h3 className="stats-title">📊 문서 통계</h3>
+    <div className="terminal-stats">
+      <div className="terminal-file-separator">
+        ═══════════════════════════════════════════════════════════
+      </div>
 
-      <div className="stats-grid">
-        <div className="stat-card">
-          <div className="stat-number">{totalPosts}</div>
-          <div className="stat-label">전체 문서</div>
+      <div className="terminal-stats-grid">
+        <div className="terminal-stat-line">
+          <span style={{ color: "var(--terminal-prompt)" }}>TOTAL_DOCS:</span>
+          <span
+            style={{ color: "var(--terminal-directory)", fontWeight: "bold" }}
+          >
+            {totalPosts}
+          </span>
         </div>
 
-        <div className="stat-card">
-          <div className="stat-number">{Object.keys(categoryStats).length}</div>
-          <div className="stat-label">카테고리</div>
+        <div className="terminal-stat-line">
+          <span style={{ color: "var(--terminal-prompt)" }}>CATEGORIES:</span>
+          <span
+            style={{ color: "var(--terminal-directory)", fontWeight: "bold" }}
+          >
+            {Object.keys(categoryStats).length}
+          </span>
         </div>
 
-        <div className="stat-card">
-          <div className="stat-number">{recentlyUpdated}</div>
-          <div className="stat-label">최근 30일 업데이트</div>
+        <div className="terminal-stat-line">
+          <span style={{ color: "var(--terminal-prompt)" }}>RECENT_30D:</span>
+          <span
+            style={{ color: "var(--terminal-directory)", fontWeight: "bold" }}
+          >
+            {recentlyUpdated}
+          </span>
         </div>
 
-        <div className="stat-card">
-          <div className="stat-number">{totalWords.toLocaleString()}</div>
-          <div className="stat-label">총 단어 수</div>
+        <div className="terminal-stat-line">
+          <span style={{ color: "var(--terminal-prompt)" }}>TOTAL_WORDS:</span>
+          <span
+            style={{ color: "var(--terminal-directory)", fontWeight: "bold" }}
+          >
+            {totalWords.toLocaleString()}
+          </span>
+        </div>
+
+        <div className="terminal-stat-line">
+          <span style={{ color: "var(--terminal-prompt)" }}>AVG_WORDS:</span>
+          <span
+            style={{ color: "var(--terminal-warning)", fontWeight: "bold" }}
+          >
+            {avgWordsPerPost}/doc
+          </span>
+        </div>
+
+        <div className="terminal-stat-line">
+          <span style={{ color: "var(--terminal-prompt)" }}>
+            AVG_READ_TIME:
+          </span>
+          <span
+            style={{ color: "var(--terminal-warning)", fontWeight: "bold" }}
+          >
+            {avgReadTime}min/doc
+          </span>
         </div>
       </div>
 
-      <div className="stats-section">
-        <h4 className="stats-section-title">📈 평균 통계</h4>
-        <div className="stats-avg">
-          <div className="avg-item">
-            <span className="avg-label">문서당 평균 단어 수:</span>
-            <span className="avg-value">{avgWordsPerPost}개</span>
-          </div>
-          <div className="avg-item">
-            <span className="avg-label">문서당 평균 읽기 시간:</span>
-            <span className="avg-value">{avgReadTime}분</span>
-          </div>
-        </div>
+      <div className="terminal-file-separator">
+        ───────────────────────────────────────────────────────────
       </div>
 
-      <div className="stats-section">
-        <h4 className="stats-section-title">🏷️ 인기 카테고리</h4>
-        <div className="popular-categories">
+      <div style={{ marginBottom: "var(--spacing-4)" }}>
+        <div
+          style={{
+            color: "var(--terminal-white)",
+            fontSize: "var(--fontSize-1)",
+            marginBottom: "var(--spacing-3)",
+            fontWeight: "bold",
+          }}
+        >
+          $ ls -la categories/ | head -5
+        </div>
+
+        <div className="terminal-categories-list">
           {categories.map(([category, count], index) => (
-            <div key={category} className="category-item">
-              <span className="category-rank">#{index + 1}</span>
-              <Link
-                to={`/tags/${category.toLowerCase()}/`}
-                className="category-link"
+            <div key={category} className="terminal-category-item">
+              <span
+                style={{
+                  color: "var(--terminal-comment)",
+                  fontSize: "var(--fontSize-0)",
+                  minWidth: "20px",
+                }}
               >
-                {category}
-              </Link>
-              <span className="category-count">{count}개</span>
+                {String(index + 1).padStart(2, "0")}.
+              </span>
+
+              <span
+                style={{
+                  color: "var(--terminal-warning)",
+                  fontSize: "var(--fontSize-0)",
+                  minWidth: "40px",
+                  textAlign: "right",
+                }}
+              >
+                {count}
+              </span>
+
+              <div style={{ flex: 1, marginLeft: "var(--spacing-2)" }}>
+                <Link
+                  to={`/tags/${category.toLowerCase()}/`}
+                  style={{
+                    color: "var(--terminal-directory)",
+                    textDecoration: "none",
+                    fontSize: "var(--fontSize-1)",
+                    fontFamily: "var(--fontFamily-mono)",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {category}/
+                </Link>
+              </div>
             </div>
           ))}
         </div>
 
         {Object.keys(categoryStats).length > 5 && (
-          <div className="view-all-categories">
-            <Link to="/tags" className="view-all-link">
-              모든 카테고리 보기 →
+          <div
+            style={{
+              marginTop: "var(--spacing-3)",
+              textAlign: "center",
+            }}
+          >
+            <Link
+              to="/tags"
+              className="terminal-more-button"
+              style={{
+                display: "inline-block",
+                padding: "var(--spacing-2) var(--spacing-4)",
+              }}
+            >
+              $ ls -la categories/ --show-all
             </Link>
           </div>
         )}
+      </div>
+
+      <div className="terminal-file-separator">
+        ───────────────────────────────────────────────────────────
+      </div>
+
+      <div
+        style={{
+          textAlign: "center",
+          color: "var(--terminal-comment)",
+          fontSize: "var(--fontSize-0)",
+          fontFamily: "var(--fontFamily-mono)",
+          marginTop: "var(--spacing-3)",
+        }}
+      >
+        Last updated:{" "}
+        {new Date()
+          .toLocaleDateString("ko-KR", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+          })
+          .replace(/\./g, ".")
+          .replace(/\s/g, "")}{" "}
+        | Generated by blog-stats v1.0.0
       </div>
     </div>
   );

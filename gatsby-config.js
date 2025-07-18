@@ -158,22 +158,79 @@ module.exports = {
             resolve: `gatsby-remark-mermaid`,
             options: {
               language: "mermaid",
-              theme: "default",
+              theme: "dark",
               viewport: {
                 width: 800,
                 height: 600,
               },
               mermaidOptions: {
-                theme: "default",
+                theme: "dark",
                 themeVariables: {
-                  // 웹 안전 폰트 사용으로 변경 (Netlify 환경에서 안정적)
-                  fontFamily: "Arial, sans-serif",
+                  // Terminal 테마에 맞는 색상 설정
+                  fontFamily:
+                    "SF Mono, Monaco, Inconsolata, Roboto Mono, Source Code Pro, Menlo, Consolas, Liberation Mono, monospace",
                   fontSize: "14px",
-                  primaryColor: "#f0f8ff",
-                  primaryTextColor: "#333",
-                  primaryBorderColor: "#0066cc",
-                  lineColor: "#666",
-                  textColor: "#333",
+                  primaryColor: "#1a1a1a",
+                  primaryTextColor: "#00ff00",
+                  primaryBorderColor: "#00ffff",
+                  lineColor: "#00ffff",
+                  textColor: "#00ff00",
+                  background: "#000000",
+                  mainBkg: "#1a1a1a",
+                  secondBkg: "#333333",
+                  tertiaryColor: "#444444",
+
+                  // 추가 터미널 스타일 설정
+                  clusterBkg: "#000000",
+                  clusterBorder: "#333333",
+                  edgeLabelBackground: "#1a1a1a",
+                  nodeTextColor: "#00ff00",
+
+                  // 다크 테마 강화 설정
+                  darkMode: true,
+                  secondaryColor: "#333333",
+                  labelTextColor: "#00ff00",
+                  fillType0: "#1a1a1a",
+                  fillType1: "#333333",
+                  fillType2: "#444444",
+                  fillType3: "#1a1a1a",
+                  fillType4: "#333333",
+                  fillType5: "#444444",
+                  fillType6: "#1a1a1a",
+                  fillType7: "#333333",
+
+                  // flowchart 전용 설정
+                  cScale0: "#1a1a1a",
+                  cScale1: "#333333",
+                  cScale2: "#444444",
+
+                  // 강제로 모든 색상을 터미널 테마로
+                  pie1: "#1a1a1a",
+                  pie2: "#333333",
+                  pie3: "#444444",
+                  pie4: "#1a1a1a",
+                  pie5: "#333333",
+                  pie6: "#444444",
+                  pie7: "#1a1a1a",
+                  pie8: "#333333",
+                  pie9: "#444444",
+                  pie10: "#1a1a1a",
+                  pie11: "#333333",
+                  pie12: "#444444",
+
+                  // 시퀀스 다이어그램 다크 테마
+                  actorBkg: "#1a1a1a",
+                  actorBorder: "#00ffff",
+                  actorTextColor: "#00ff00",
+                  actorLineColor: "#00ffff",
+                  signalColor: "#00ffff",
+                  signalTextColor: "#00ff00",
+
+                  // 간트 차트 다크 테마
+                  section0: "#1a1a1a",
+                  section1: "#333333",
+                  section2: "#444444",
+                  section3: "#1a1a1a",
                 },
                 flowchart: {
                   useMaxWidth: true,

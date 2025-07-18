@@ -1,67 +1,76 @@
 import * as React from "react";
 import { Link, graphql } from "gatsby";
-import Navigation from "../components/navigation";
+import Layout from "../components/layout";
 import Seo from "../components/seo";
 
-const TagTemplate = ({ data, pageContext }) => {
+const TagTemplate = ({ data, pageContext, location }) => {
   const posts = data.allMarkdownRemark.nodes;
   const { tag } = pageContext;
   const totalCount = posts.length;
 
   return (
-    <>
+    <Layout location={location} title="intzzzero">
       <Seo title={`Posts tagged "${tag}"`} />
-      <Navigation />
-      <main className="wiki-main-wrapper">
-        <div className="wiki-content">
-          <h3 className="wiki-section-title">
-            {tag} 카테고리 ({totalCount}개 문서)
-          </h3>
 
-          <div className="wiki-tag-breadcrumb">
-            <Link to="/tags" className="wiki-breadcrumb-link">
-              ← 모든 카테고리
-            </Link>
+      <div className="terminal-output">
+        <div className="terminal-command-header">
+          <div style={{ marginBottom: "0" }}>$ ls -la {tag}/</div>
+          <div
+            style={{
+              color: "var(--terminal-comment)",
+              fontSize: "var(--fontSize-1)",
+            }}
+          >
+            found {totalCount} files
           </div>
+        </div>
 
-          <ol className="wiki-post-list">
-            {posts.map(post => {
-              const title = post.frontmatter.title || post.fields.slug;
-              const updateDate =
-                post.frontmatter.update || post.frontmatter.date;
-              const formattedDate = new Date(updateDate)
-                .toLocaleDateString("ko-KR", {
-                  year: "numeric",
-                  month: "2-digit",
-                  day: "2-digit",
-                })
-                .replace(/\./g, ".")
-                .replace(/\s/g, "");
+        <div className="terminal-file-list">
+          {posts.map((post, index) => {
+            const title = post.frontmatter.title || post.fields.slug;
+            const updateDate = post.frontmatter.update || post.frontmatter.date;
+            const formattedDate = new Date(updateDate)
+              .toLocaleDateString("ko-KR", {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit",
+              })
+              .replace(/\./g, ".")
+              .replace(/\s/g, "");
 
-              return (
-                <li key={post.fields.slug} className="wiki-post-item">
-                  <div className="wiki-post-date">{formattedDate}</div>
-                  <div className="wiki-post-content">
-                    <Link to={post.fields.slug} className="wiki-post-link">
-                      {title}
-                    </Link>
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
+            return (
+              <div key={post.fields.slug} className="post-list-item">
+                <div className="post-date">{formattedDate}</div>
+                <div className="post-category">[{tag}]</div>
+                <header>
+                  <h2>
+                    <Link to={post.fields.slug}>{title}</Link>
+                  </h2>
+                </header>
+              </div>
+            );
+          })}
+        </div>
 
-          <div className="wiki-tag-navigation">
-            <Link to="/tags" className="wiki-nav-button">
-              모든 카테고리 보기
+        <div className="terminal-more-section">
+          <div
+            style={{
+              display: "flex",
+              gap: "var(--spacing-4)",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            <Link to="/tags" className="terminal-more-button">
+              $ cd ../tags/
             </Link>
-            <Link to="/" className="wiki-nav-button">
-              최근 문서 보기
+            <Link to="/" className="terminal-more-button">
+              $ cat recent_posts.md
             </Link>
           </div>
         </div>
-      </main>
-    </>
+      </div>
+    </Layout>
   );
 };
 

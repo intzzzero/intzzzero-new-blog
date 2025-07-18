@@ -24,6 +24,25 @@ GPT 기반 키워드 분류는 비싸고 느렸다. 벡터 임베딩으로 갈�
 어려운 말 같지만 별거 아니다. 모든 키워드를 숫자로 된 좌표, 즉 **벡터**로 바꾸는 기술이다. 예를 들어 '백엔드 개발'이라는 단어는 1,536차원 공간의 한 점 `(0.8, 0.9, ...)`이 되는 식이다. 이렇게 좌표로 바꾸고 나면, 두 점 사이의 거리를 재서 얼마나 가까운지(유사한지) 계산할 수 있다.
 
 ```mermaid
+%%{init: {
+  "theme": "dark",
+  "themeVariables": {
+    "background": "#000000",
+    "primaryColor": "#1a1a1a",
+    "primaryTextColor": "#00ff00",
+    "primaryBorderColor": "#00ffff",
+    "lineColor": "#00ffff",
+    "secondaryColor": "#333333",
+    "tertiaryColor": "#444444",
+    "textColor": "#00ff00",
+    "mainBkg": "#1a1a1a",
+    "secondBkg": "#333333",
+    "clusterBkg": "#000000",
+    "clusterBorder": "#333333",
+    "edgeLabelBackground": "#1a1a1a",
+    "nodeTextColor": "#00ff00"
+  }
+}}%%
 graph LR
     subgraph "2차원 예시 (실제는 1,536차원)"
         A["백엔드 개발<br/>(0.8, 0.9)"]
@@ -37,12 +56,6 @@ graph LR
     A -.->|보통| C
     A -.->|멀음| D
     A -.->|아주 멀음| E
-
-    style A fill:#e1f5fe
-    style B fill:#e1f5fe
-    style C fill:#f3e5f5
-    style D fill:#fff3e0
-    style E fill:#ffebee
 ```
 
 GPT처럼 복잡한 추론을 하는 게 아니라, 단순히 좌표를 찍고 거리를 재는 거라 훨씬 빠르고 저렴하다. OpenAI의 `text-embedding-3-small` 모델은 GPT-4에 비해 가격은 90% 이상 저렴하고, 속도는 10배 이상 빨랐다. 게다가 항상 같은 입력에 같은 결과를 내놓으니 일관성 문제도 해결됐다.
@@ -56,6 +69,25 @@ GPT처럼 복잡한 추론을 하는 게 아니라, 단순히 좌표를 찍고 �
 3.  미리 정해둔 점수 구간(임계값)에 따라 Tier 1/2/3로 분류한다.
 
 ```mermaid
+%%{init: {
+  "theme": "dark",
+  "themeVariables": {
+    "background": "#000000",
+    "primaryColor": "#1a1a1a",
+    "primaryTextColor": "#00ff00",
+    "primaryBorderColor": "#00ffff",
+    "lineColor": "#00ffff",
+    "secondaryColor": "#333333",
+    "tertiaryColor": "#444444",
+    "textColor": "#00ff00",
+    "mainBkg": "#1a1a1a",
+    "secondBkg": "#333333",
+    "clusterBkg": "#000000",
+    "clusterBorder": "#333333",
+    "edgeLabelBackground": "#1a1a1a",
+    "nodeTextColor": "#00ff00"
+  }
+}}%%
 flowchart TD
     subgraph "1단계: 입력 데이터"
         A["채용공고 키워드<br/>예: 백엔드 개발자, Node.js, AWS"]
@@ -91,10 +123,6 @@ flowchart TD
     H -->|65% 이상| I
     H -->|45~64%| J
     H -->|45% 미만| K
-
-    style I fill:#c8e6c9
-    style J fill:#fff9c4
-    style K fill:#ffcdd2
 ```
 
 ## 🔬 결과는 성공적, 하지만…

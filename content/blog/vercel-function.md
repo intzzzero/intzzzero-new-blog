@@ -21,13 +21,32 @@ const apiKey = process.env.NEXT_PUBLIC_SOME_API_KEY;
 개발자 도구를 열기 전까지는 모든 게 완벽해 보였다. 네트워크 탭에서 `sk-...`로 시작하는 내 소중한 API 키가 버젓이 노출된 것을 발견하기 전까지는. 식은땀이 흘렀다. JavaScript 번들 파일을 까보니 거기에도 API 키가 고스란히 박제되어 있었다.
 
 ```mermaid
+%%{init: {
+  "theme": "dark",
+  "themeVariables": {
+    "background": "#000000",
+    "primaryColor": "#1a1a1a",
+    "primaryTextColor": "#00ff00",
+    "primaryBorderColor": "#00ffff",
+    "lineColor": "#00ffff",
+    "secondaryColor": "#333333",
+    "tertiaryColor": "#444444",
+    "textColor": "#00ff00",
+    "mainBkg": "#1a1a1a",
+    "secondBkg": "#333333",
+    "clusterBkg": "#000000",
+    "clusterBorder": "#333333",
+    "edgeLabelBackground": "#1a1a1a",
+    "nodeTextColor": "#00ff00"
+  }
+}}%%
 graph TD
     subgraph 사용자 브라우저
         A[프론트엔드 JS 실행] -- API 키 포함! --> B{OpenAI API 직접 호출};
     end
     A -- API 키 유출! --> C(악의적인 사용자);
 
-    style A fill:#ffcccc,stroke:#333,stroke-width:2px
+    style A fill:#ff4444,stroke:#00ffff,stroke-width:2px
 ```
 
 ### 🛡️ 서버리스 함수, 구원투수로 등판하다
@@ -35,6 +54,25 @@ graph TD
 정신을 차리고 해결책을 찾아 나섰다. 클라이언트가 AI 서비스에 직접 요청하는 것이 문제이니, 중간에 우리 서버를 대리인으로 내세우면 되는 거였다. 바로 사용 중인 배포 플랫폼의 서버리스 함수를 이용해 프록시 API를 만드는 것.
 
 ```mermaid
+%%{init: {
+  "theme": "dark",
+  "themeVariables": {
+    "background": "#000000",
+    "primaryColor": "#1a1a1a",
+    "primaryTextColor": "#00ff00",
+    "primaryBorderColor": "#00ffff",
+    "lineColor": "#00ffff",
+    "secondaryColor": "#333333",
+    "tertiaryColor": "#444444",
+    "textColor": "#00ff00",
+    "mainBkg": "#1a1a1a",
+    "secondBkg": "#333333",
+    "clusterBkg": "#000000",
+    "clusterBorder": "#333333",
+    "edgeLabelBackground": "#1a1a1a",
+    "nodeTextColor": "#00ff00"
+  }
+}}%%
 graph TD
     subgraph 사용자 브라우저
         A[프론트엔드 JS 실행] -- API 키 없음 --> B{/api/openai 호출};
@@ -49,7 +87,7 @@ graph TD
 
     B -- 결과 수신 --> A;
 
-    style C fill:#cce5ff,stroke:#333,stroke-width:2px
+    style C fill:#333333,stroke:#00ff00,stroke-width:2px
 ```
 
 먼저, 가장 위험한 환경변수부터 수정했다.

@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Link, graphql } from "gatsby";
-import Navigation from "../components/navigation";
+import Layout from "../components/layout";
 import Seo from "../components/seo";
 
-const TagsPage = ({ data }) => {
+const TagsPage = ({ data, location }) => {
   const posts = data.allMarkdownRemark.nodes;
 
   // 카테고리별 포스트 수 계산
@@ -18,47 +18,184 @@ const TagsPage = ({ data }) => {
   const categories = Object.entries(categoryCount).sort((a, b) => b[1] - a[1]);
 
   return (
-    <>
+    <Layout location={location} title="intzzzero">
       <Seo title="Tags" />
-      <Navigation />
-      <main className="wiki-main-wrapper">
-        <div className="wiki-content">
-          <h3 className="wiki-section-title">카테고리별 분류</h3>
 
-          <div className="wiki-tags-grid">
+      <div className="terminal-output">
+        <div className="terminal-command-header">
+          <div style={{ marginBottom: "0" }}>$ ls -la categories/</div>
+          <div
+            style={{
+              color: "var(--terminal-comment)",
+              fontSize: "var(--fontSize-1)",
+            }}
+          >
+            total {categories.length} directories, {posts.length} files
+          </div>
+        </div>
+
+        <div className="terminal-file-list">
+          <div
+            style={{
+              marginBottom: "var(--spacing-4)",
+              padding: "var(--spacing-3)",
+              background: "var(--terminal-bg-alt)",
+              border: "1px solid var(--terminal-border)",
+              borderRadius: "4px",
+            }}
+          >
+            <div
+              style={{
+                color: "var(--terminal-white)",
+                fontSize: "var(--fontSize-2)",
+                marginBottom: "var(--spacing-2)",
+                fontWeight: "bold",
+              }}
+            >
+              drwxr-xr-x categories/
+            </div>
+
             {categories.map(([category, count]) => (
-              <div key={category} className="wiki-tag-item">
-                <Link
-                  to={`/tags/${category.toLowerCase()}`}
-                  className="wiki-tag-link"
+              <div
+                key={category}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "var(--spacing-4)",
+                  padding: "var(--spacing-1) 0",
+                  borderBottom: "1px solid var(--terminal-border)",
+                }}
+              >
+                <div
+                  style={{
+                    color: "var(--terminal-comment)",
+                    fontSize: "var(--fontSize-0)",
+                    minWidth: "80px",
+                    fontFamily: "var(--fontFamily-mono)",
+                  }}
                 >
-                  {category}
-                </Link>
-                <span className="wiki-tag-count">({count})</span>
+                  drwxr-xr-x
+                </div>
+                <div
+                  style={{
+                    color: "var(--terminal-warning)",
+                    fontSize: "var(--fontSize-0)",
+                    minWidth: "40px",
+                    textAlign: "right",
+                  }}
+                >
+                  {count}
+                </div>
+                <div style={{ flex: 1 }}>
+                  <Link
+                    to={`/tags/${category.toLowerCase()}`}
+                    style={{
+                      color: "var(--terminal-directory)",
+                      textDecoration: "none",
+                      fontSize: "var(--fontSize-1)",
+                      fontFamily: "var(--fontFamily-mono)",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {category}/
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
 
-          <div className="wiki-section" style={{ marginTop: "3rem" }}>
-            <h4>전체 문서 통계</h4>
-            <ul className="wiki-stats-list">
-              <li>
-                총 문서 수: <strong>{posts.length}개</strong>
-              </li>
-              <li>
-                카테고리 수: <strong>{categories.length}개</strong>
-              </li>
-              <li>
-                가장 많은 카테고리:{" "}
-                <strong>
-                  {categories[0]?.[0]} ({categories[0]?.[1]}개)
-                </strong>
-              </li>
-            </ul>
+          <div className="terminal-file-separator">
+            ───────────────────────────────────────────────────────────
+          </div>
+
+          <div
+            style={{
+              background: "var(--terminal-bg-alt)",
+              border: "1px solid var(--terminal-border)",
+              borderRadius: "4px",
+              padding: "var(--spacing-4)",
+            }}
+          >
+            <div
+              style={{
+                color: "var(--terminal-white)",
+                fontSize: "var(--fontSize-2)",
+                marginBottom: "var(--spacing-3)",
+                fontWeight: "bold",
+              }}
+            >
+              $ cat system_stats.txt
+            </div>
+
+            <div
+              style={{
+                color: "var(--terminal-fg)",
+                lineHeight: "var(--lineHeight-relaxed)",
+                fontFamily: "var(--fontFamily-mono)",
+              }}
+            >
+              <div style={{ marginBottom: "var(--spacing-2)" }}>
+                <span style={{ color: "var(--terminal-prompt)" }}>
+                  TOTAL_FILES:
+                </span>{" "}
+                <span style={{ color: "var(--terminal-directory)" }}>
+                  {posts.length}
+                </span>
+              </div>
+              <div style={{ marginBottom: "var(--spacing-2)" }}>
+                <span style={{ color: "var(--terminal-prompt)" }}>
+                  CATEGORIES:
+                </span>{" "}
+                <span style={{ color: "var(--terminal-directory)" }}>
+                  {categories.length}
+                </span>
+              </div>
+              <div style={{ marginBottom: "var(--spacing-2)" }}>
+                <span style={{ color: "var(--terminal-prompt)" }}>
+                  LARGEST_CAT:
+                </span>{" "}
+                <span style={{ color: "var(--terminal-directory)" }}>
+                  {categories[0]?.[0]} ({categories[0]?.[1]} files)
+                </span>
+              </div>
+              <div>
+                <span style={{ color: "var(--terminal-prompt)" }}>
+                  LAST_SCAN:
+                </span>{" "}
+                <span style={{ color: "var(--terminal-comment)" }}>
+                  {new Date()
+                    .toLocaleDateString("ko-KR", {
+                      year: "numeric",
+                      month: "2-digit",
+                      day: "2-digit",
+                    })
+                    .replace(/\./g, ".")
+                    .replace(/\s/g, "")}
+                </span>
+              </div>
+            </div>
           </div>
         </div>
-      </main>
-    </>
+
+        <div className="terminal-more-section">
+          <div
+            style={{
+              display: "flex",
+              gap: "var(--spacing-4)",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            <Link to="/" className="terminal-more-button">
+              $ cd ~/
+            </Link>
+            <Link to="/random" className="terminal-more-button">
+              $ ./random.sh
+            </Link>
+          </div>
+        </div>
+      </div>
+    </Layout>
   );
 };
 
