@@ -36,9 +36,13 @@ const AboutPage = ({ location }) => {
 
         <article className="terminal-article">
           <section className="terminal-article-content">
-            <h1># ABOUT ME</h1>
+            <h1>ABOUT ME</h1>
 
             <div style={{ marginBottom: "var(--spacing-8)" }}>
+              <p>
+                HOP(Human Oriented Programming)를 지향하며 사람의 문제를
+                해결하는 코드를 짓습니다.
+              </p>
               <p>독서보다는 도서수집을 좋아하며 수집한 책 중 골라 읽습니다.</p>
               <p>분야를 막론하고 새로운 것에 흥미를 느낍니다.</p>
               <p>
@@ -47,7 +51,7 @@ const AboutPage = ({ location }) => {
               <p>가장 자주 하는 말은 "그럴 수도 있지"입니다.</p>
             </div>
 
-            <h2>## CONTACT</h2>
+            <h2>CONTACT</h2>
             <div style={{ lineHeight: "1.8" }}>
               <p>
                 <code>Github:</code>{" "}
@@ -61,9 +65,9 @@ const AboutPage = ({ location }) => {
                 </a>
               </p>
               <p>
-                <code>Instagram:</code>{" "}
+                <code>Threads:</code>{" "}
                 <a
-                  href="https://www.instagram.com/intzzzero/"
+                  href="https://www.threads.net/@intzzzero"
                   target="_blank"
                   rel="noreferrer"
                   style={{ color: "var(--terminal-directory)" }}
