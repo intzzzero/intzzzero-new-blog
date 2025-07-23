@@ -37,6 +37,9 @@ const AboutPage = ({ location }) => {
         <article className="terminal-article">
           <section className="terminal-article-content">
             <h1>ABOUT ME</h1>
+            <h3>
+              <i>인생은 언제나 0으로 수렴하는 음수와 양수의 연속</i>
+            </h3>
 
             <div style={{ marginBottom: "var(--spacing-8)" }}>
               <p>
