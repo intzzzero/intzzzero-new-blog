@@ -13,7 +13,8 @@ const Layout = ({ location, title, children }) => {
         <div className="terminal-footer-content">
           <span className="terminal-footer-prompt">$</span>
           <span className="terminal-footer-text">
-            echo "© {new Date().getFullYear()} intzzzero | Built with Gatsby"
+            echo "© {new Date().getFullYear()} 음수와 양수 사이 | Built with
+            Gatsby"
           </span>
         </div>
         <div className="terminal-footer-signature">

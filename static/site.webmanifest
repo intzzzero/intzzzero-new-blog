@@ -1,7 +1,7 @@
 {
-  "name": "INTZZZERO",
+  "name": "음수와 양수 사이",
   "short_name": "INTZZZERO",
-  "description": "intzzzero's new blog",
+  "description": "인생은 언제나 0으로 수렴하는 음수와 양수의 연속",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#1a1a1a",

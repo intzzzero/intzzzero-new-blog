@@ -9,12 +9,12 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `INTZZZERO`,
+    title: `음수와 양수 사이`,
     author: {
       name: `intzzzero`,
-      summary: `who writes about various things`,
+      summary: `인생은 언제나 0으로 수렴하는 음수와 양수의 연속`,
     },
-    description: `intzzzero's new blog`,
+    description: `인생은 언제나 0으로 수렴하는 음수와 양수의 연속`,
     siteUrl: `https://intzzzero.netlify.app`,
   },
   plugins: [

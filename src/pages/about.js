@@ -5,7 +5,7 @@ import Seo from "../components/seo";
 
 const AboutPage = ({ location }) => {
   return (
-    <Layout location={location} title="intzzzero">
+    <Layout location={location} title="음수와 양수 사이">
       <Seo title="About Me" />
 
       <div className="terminal-output">

@@ -13,7 +13,7 @@ const BlogPostTemplate = ({
   const backlinks = findBacklinks(post, allPosts);
 
   return (
-    <Layout location={location} title="intzzzero">
+    <Layout location={location} title="음수와 양수 사이">
       <Seo title={post.frontmatter.title} />
       <ReadingProgress content={post.html} />
 

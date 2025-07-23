@@ -18,7 +18,7 @@ const RandomPage = ({ data, location }) => {
   }, [posts]);
 
   return (
-    <Layout location={location} title="intzzzero">
+    <Layout location={location} title="음수와 양수 사이">
       <Seo title="Random Post" />
 
       <div className="terminal-output">

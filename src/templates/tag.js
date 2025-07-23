@@ -9,7 +9,7 @@ const TagTemplate = ({ data, pageContext, location }) => {
   const totalCount = posts.length;
 
   return (
-    <Layout location={location} title="intzzzero">
+    <Layout location={location} title="음수와 양수 사이">
       <Seo title={`Posts tagged "${tag}"`} />
 
       <div className="terminal-output">

@@ -10,7 +10,7 @@ const BlogIndex = ({ data, location }) => {
   const displayPosts = showAll ? posts : posts.slice(0, 15);
 
   return (
-    <Layout location={location} title="intzzzero">
+    <Layout location={location} title="음수와 양수 사이">
       <Seo title="All posts" />
 
       <div className="terminal-output">

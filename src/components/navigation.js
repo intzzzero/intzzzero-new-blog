@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import SearchModal from "./search-modal";
 import KeyboardShortcuts from "./keyboard-shortcuts";
 
-const Navigation = ({ siteTitle = "INTZZZERO" }) => {
+const Navigation = ({ siteTitle = "음수와 양수 사이" }) => {
   const [isSearchOpen, setIsSearchOpen] = React.useState(false);
 
   return (

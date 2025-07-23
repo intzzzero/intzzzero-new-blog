@@ -18,7 +18,7 @@ const TagsPage = ({ data, location }) => {
   const categories = Object.entries(categoryCount).sort((a, b) => b[1] - a[1]);
 
   return (
-    <Layout location={location} title="intzzzero">
+    <Layout location={location} title="음수와 양수 사이">
       <Seo title="Tags" />
 
       <div className="terminal-output">
