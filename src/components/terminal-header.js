@@ -25,7 +25,7 @@ const BlinkingCursor = () => {
   );
 };
 
-const TerminalHeader = ({ siteTitle = "음수와 양수 사이", location }) => {
+const TerminalHeader = ({ siteTitle = "intzzzero", location }) => {
   const [currentPath, setCurrentPath] = useState("");
   const [currentTime, setCurrentTime] = useState("");
 
