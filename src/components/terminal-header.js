@@ -60,7 +60,7 @@ const TerminalHeader = ({ siteTitle = "intzzzero", location }) => {
   return (
     <header className="terminal-header">
       <div className="terminal-prompt-line">
-        <span className="terminal-user">user@{siteTitle}</span>
+        <span className="terminal-user">user@intzzzero</span>
         <span className="terminal-separator">:</span>
         <span className="terminal-path">~/{currentPath}</span>
         <span className="terminal-prompt">$</span>
