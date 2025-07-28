@@ -56,6 +56,10 @@ const Seo = ({ description, title, children }) => {
       {/* Theme Color for Mobile Browsers */}
       <meta name="theme-color" content="#00ff00" />
       <meta name="msapplication-TileColor" content="#1a1a1a" />
+      <meta
+        name="naver-site-verification"
+        content="ce049be839973abdf791cac1e77070c31c3ee6a2"
+      />
 
       {children}
     </Helmet>
