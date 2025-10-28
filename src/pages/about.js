@@ -68,9 +68,9 @@ const AboutPage = ({ location }) => {
                 </a>
               </p>
               <p>
-                <code>Threads:</code>{" "}
+                <code>LinkedIn:</code>{" "}
                 <a
-                  href="https://www.threads.net/@intzzzero"
+                  href="https://www.linkedin.com/in/intzzzero/"
                   target="_blank"
                   rel="noreferrer"
                   style={{ color: "var(--terminal-directory)" }}
