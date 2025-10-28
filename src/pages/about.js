@@ -36,7 +36,7 @@ const AboutPage = ({ location }) => {
 
         <article className="terminal-article">
           <section className="terminal-article-content">
-            <h1>ABOUT ME</h1>
+            <h2>ABOUT ME</h2>
             <h3>
               <i>인생은 언제나 0으로 수렴하는 음수와 양수의 연속</i>
             </h3>
@@ -54,7 +54,7 @@ const AboutPage = ({ location }) => {
               <p>가장 자주 하는 말은 "그럴 수도 있지"입니다.</p>
             </div>
 
-            <h2>CONTACT</h2>
+            <h3>CONTACT</h3>
             <div style={{ lineHeight: "1.8" }}>
               <p>
                 <code>Github:</code>{" "}
