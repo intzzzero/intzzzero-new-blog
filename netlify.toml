@@ -12,3 +12,17 @@
 
 [[plugins]]
   package = "@netlify/plugin-gatsby" 
+
+[[redirects]]
+from = "/app-ads.txt"
+to = "/app-ads.txt"
+status = 200
+force = true
+conditions = { Host = "intzzzero.dev" }
+
+[[redirects]]
+from = "/*"
+to = "https://www.intzzzero.dev/:splat"
+status = 301
+force = true
+conditions = { Host = "intzzzero.dev" }
