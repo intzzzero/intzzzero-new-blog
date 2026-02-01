@@ -58,7 +58,7 @@ It automates the process of searching, filtering, and writing a high-quality blo
 
     ---
 
-    ### 날카로운 추측 (Sharp Speculation)
+    ### 예상되는 미래 (Expected Future)
 
     [Add your own insight/speculation here. Connect the dots between news items. Be bold and opinionated but grounded in engineering reality.]
 
