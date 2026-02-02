@@ -44,7 +44,7 @@ const AboutPage = ({ location }) => {
             <div style={{ marginBottom: "var(--spacing-8)" }}>
               <p>
                 HOP(Human Oriented Programming)를 지향하며 사람의 문제를
-                해결하는 코드를 짓습니다.
+                해결하는 코드를 (AI가)짓습니다.
               </p>
               <p>독서보다는 도서수집을 좋아하며 수집한 책 중 골라 읽습니다.</p>
               <p>분야를 막론하고 새로운 것에 흥미를 느낍니다.</p>
