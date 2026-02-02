@@ -1,5 +1,5 @@
 ---
-name: ai_news_gen
+name: ai-news-gen
 description: Generate a blog post summarizing the latest AI news.
 ---
 

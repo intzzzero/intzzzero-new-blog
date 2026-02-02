@@ -38,4 +38,4 @@
 
 ### AI News Generation
 - **Trigger**: "오늘의 AI뉴스 생성해줘"
-- **Action**: 실행 시 `skills/ai_news_gen/SKILL.md`의 지침을 따르시오. 최신 AI 뉴스를 검색하고, 지정된 포맷과 어조로 블로그 포스트를 생성해야 합니다.
+- **Action**: 실행 시 `.gemini/skills/ai-news-gen/SKILL.md`의 지침을 따르시오. 최신 AI 뉴스를 검색하고, 지정된 포맷과 어조로 블로그 포스트를 생성해야 합니다.
