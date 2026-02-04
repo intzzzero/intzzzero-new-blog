@@ -12,7 +12,7 @@ It automates the process of searching, filtering, and writing a high-quality blo
 
 1.  **Search Phase**:
     *   Search for "AI news", "Artificial Intelligence trends", "LLM new models", "AI tech news" from the **last 3 days**.
-    *   Use `search_web` to gather significant events. Focus on major releases, impactful research, or industry-shaking news (e.g., OpenAI, Google, Anthropic, open source models).
+    *   Use web search to gather significant events. Focus on major releases, impactful research, or industry-shaking news (e.g., OpenAI, Google, Anthropic, open source models).
 
 2.  **Selection Phase**:
     *   Select 3-5 most important news items.
@@ -25,7 +25,7 @@ It automates the process of searching, filtering, and writing a high-quality blo
     *   **Tone & Style**:
         *   Casual, witty, no honorifics (Banmal/반말).
         *   Professional but accessible (Software Engineer blogger persona).
-        *   **No emojis** in the main text (as per `GEMINI.md`).
+        *   **No emojis** in the main text (as per `CLAUDE.md`).
         *   Concise sentences.
     *   **마크다운 특수문자 처리 (중요)**:
         *   괄호 `()` 가 포함된 텍스트에 `**bold**` 또는 `*italic*` 적용 시, 반드시 괄호를 이스케이프하거나 HTML 태그 사용
