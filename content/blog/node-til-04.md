@@ -29,7 +29,7 @@ Node.js에서는 테스트를 위해 다음과 같은 세 가지 라이브러리
 
 ## Mocha
 
-모카(mocha)는 테스트 코드를 실행해주는 **테스트 러너(Test Runner)** 이고, **테스트 수트(Test Suite)** 는 테스트 환경을 의미하며 모카에서는 `describe()`로 구현한다. **테스트 케이스(Test Case)** 는 실제 테스트를 말하며 모카에서는 `it()`으로 구현한다.
+모카(mocha)는 테스트 코드를 실행해주는 **테스트 러너\(Test Runner\)** 이고, **테스트 수트\(Test Suite\)** 는 테스트 환경을 의미하며 모카에서는 `describe()`로 구현한다. **테스트 케이스\(Test Case\)** 는 실제 테스트를 말하며 모카에서는 `it()`으로 구현한다.
 
 ### 환경 구성
 
@@ -126,7 +126,7 @@ node_modules/.bin/mocha utils.spec.js
 
 테스트 코드 작성 시 Node.js에서 제공되는 `assert`모듈 대신 서드파티 라이브러리의 사용을 권장하고 있으며, 그 중 하나가 검증(assertion) 라이브러리인 Should.js다.
 
-**Should.js는 BDD(Behavior Driven Development) 스타일의 Assertion 라이브러리** 로써 마치 일반 문장을 읽는 듯 표현적이고 가독성이 뛰어난 것이 특징이다.
+**Should.js는 BDD\(Behavior Driven Development\) 스타일의 Assertion 라이브러리** 로써 마치 일반 문장을 읽는 듯 표현적이고 가독성이 뛰어난 것이 특징이다.
 
 ```javascript
 const should = require("should")
@@ -148,7 +148,7 @@ describe("utils.js module's capitalize() is...", () => {
 
 ## superTest
 
-위의 테스트들은 함수의 기능을 테스트하는 **단위 테스트(Unit Test)** 였지만, superTest를 통해 진행하는 테스트는 **API의 기능을 테스트하는 통합 테스트(Integration Test)** 다.
+위의 테스트들은 함수의 기능을 테스트하는 **단위 테스트\(Unit Test\)** 였지만, superTest를 통해 진행하는 테스트는 **API의 기능을 테스트하는 통합 테스트\(Integration Test\)** 다.
 superTest는 익스프레스 통합 테스트용 라이브러리로써 내부적으로 익스프레스 서버를 구동시켜 실제 요청을 보낸 뒤 결과를 검증한다.
 
 ```javascript

@@ -10,7 +10,7 @@ path: "/blog/first-class-object"
 ![javascript](https://blog.martinwork.co.kr/images/javascript/javascript.png)
 
 ## 1급 객체란
-특정 언어의 **일급 객체** (first-class citizens, 일급 값, 일급 엔티티, 혹은 일급 시민)이라 함은 컴퓨터 프로그래밍 언어 디자인에서 일반적으로 다른 객체들에 적용 가능한 연산을 모두 지원하는 객체를 가리킨다. 함수에 매개변수로 넘기기, 변수에 대입하기와 같은 연산들이 여기서 말하는 **일반적인** 연산의 예에 해당한다.
+특정 언어의 **일급 객체** \(first-class citizens, 일급 값, 일급 엔티티, 혹은 일급 시민\)이라 함은 컴퓨터 프로그래밍 언어 디자인에서 일반적으로 다른 객체들에 적용 가능한 연산을 모두 지원하는 객체를 가리킨다. 함수에 매개변수로 넘기기, 변수에 대입하기와 같은 연산들이 여기서 말하는 **일반적인** 연산의 예에 해당한다.
 직관적으로 설명하자면, Function 이면서 Class의 성질인 지닌 객체 또는 Class이면서 Function의 성질을 지닌 객체를 First-Class Citizens 라고 이해할 수 있다.
 JavaScript 에서 Function에 Property를 줄 수 있는 것이 대표적인 예이다.
 

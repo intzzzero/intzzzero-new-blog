@@ -10,7 +10,7 @@ path: "/blog/box-model"
 ![CSS](https://media.vlpt.us/images/daybreak/post/1c7df7ec-65ee-4617-8b97-31dddd944dc3/css.jpg)
 
 ## CSS의 기본이자 핵심은 BOX
-CSS에서 가장 기본적이자 가장 중요한 개념은 단연 **박스 모델(Box model)**이라고 할 수 있겠다. 이것을 모르면 절대 웹 페이지의 레이아웃을 구성할 수가 없다. 박스 모델은 아래의 그림과 같다.
+CSS에서 가장 기본적이자 가장 중요한 개념은 단연 **박스 모델\(Box model\)**이라고 할 수 있겠다. 이것을 모르면 절대 웹 페이지의 레이아웃을 구성할 수가 없다. 박스 모델은 아래의 그림과 같다.
 
 ![box model](https://github.com/codeAmeba/amebalab/blob/master/src/images/css-box-model.jpg?raw=true)
 
@@ -69,9 +69,9 @@ Content는 내용, Padding은 안쪽 여백, Border는 테두리, Margin은 바�
     </style>
 ```
 
-차이점을 발견했는가? 그렇다. BOX 01에는 `box-sizing: border-box;`가 적용되어 있다. 이것은 **지정된 박스 크기(width, height)에 border와 padding이 포함된 형태**로 나타나며, 위의 예시에서 볼 수 있듯이 두 박스가 모두 `padding: 15px`을 갖고 있지만 보여지는 크기가 다르다.
+차이점을 발견했는가? 그렇다. BOX 01에는 `box-sizing: border-box;`가 적용되어 있다. 이것은 **지정된 박스 크기\(width, height\)에 border와 padding이 포함된 형태**로 나타나며, 위의 예시에서 볼 수 있듯이 두 박스가 모두 `padding: 15px`을 갖고 있지만 보여지는 크기가 다르다.
 
-쉽게 이해하려면, border와 padding의 값은 적용되지 않는다고 생각하면 좋다. 하지만, '내부에 포함되었을 뿐, 사라진 것은 아니라는 점을 명심하자.' 이러한 특성을 지닌 `border-box`를 사용하는 이유는 **테두리(border나 여백(padding)에 상관 없이 예측 가능한 크기의 박스를 얻기 위함**이다.
+쉽게 이해하려면, border와 padding의 값은 적용되지 않는다고 생각하면 좋다. 하지만, '내부에 포함되었을 뿐, 사라진 것은 아니라는 점을 명심하자.' 이러한 특성을 지닌 `border-box`를 사용하는 이유는 **테두리\(border나 여백\(padding\)에 상관 없이 예측 가능한 크기의 박스를 얻기 위함**이다.
 
 `border-box` 외에도 다음과 같은 속성값이 존재한다.
 - `content-box`: 기본값
@@ -88,7 +88,7 @@ margin: 10px;
 ```
 
 각 `box-sizing`값에 따라 실제로 차지하는 영역은 다음과 같다.
-**content-box(기본값)**: width: 350px, height: 350px
+**content-box\(기본값\)**: width: 350px, height: 350px
 **padding-box**: width: 320px, height: 320px
 **border-box**: width: 330px, height: 330px
 

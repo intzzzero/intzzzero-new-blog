@@ -10,7 +10,7 @@ path: "/blog/prototype-chain"
 ![javascript](https://blog.martinwork.co.kr/images/javascript/javascript.png)
 
 ## 프로토타입(prototype)
-자바스크립트의 모든 객체는 `[[Prototype]]`이라고 하는 **내부 슬롯(internal slot)**을 지닌다. 하위 객체는 상위 객체의 `prototype`을 상속받으며, 상속받은 데이터는 `__proto__`에 저장된다.
+자바스크립트의 모든 객체는 `[[Prototype]]`이라고 하는 **내부 슬롯\(internal slot\)**을 지닌다. 하위 객체는 상위 객체의 `prototype`을 상속받으며, 상속받은 데이터는 `__proto__`에 저장된다.
 
 ```js
 const myCat = {

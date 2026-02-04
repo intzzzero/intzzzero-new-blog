@@ -90,7 +90,7 @@ console.log(longerThan5Length); // [“banana”, “blueberry”]
 ```
 
 ## reduce
-`reduce()`는 배열을 기반으로 하나의 값을 도출할 때 사용한다. reduce의 인수로 넘기는 함수의 첫 번째 인수는 **accumulator(누산기)** 라고 할 수 있으며, 함수의 결과가 누적되어 저장되고 마지막 함수까지 호출되면 이 값이 `reduce()`의 반환값이 된다.
+`reduce()`는 배열을 기반으로 하나의 값을 도출할 때 사용한다. reduce의 인수로 넘기는 함수의 첫 번째 인수는 **accumulator\(누산기\)** 라고 할 수 있으며, 함수의 결과가 누적되어 저장되고 마지막 함수까지 호출되면 이 값이 `reduce()`의 반환값이 된다.
 
 ```js
 const myNums = [1, 5, 3, 7, 9, 2];

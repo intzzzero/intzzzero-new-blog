@@ -45,7 +45,7 @@ npm i prettier eslint-config-prettier eslint-plugin-prettier -D
 
 ### Prettier 설정
 
-이어서 VSCode의 설정을 열어 Prettier의 설정을 한다. 이때, JSON 설정 파일에 직접 추가하는 것이 편하고 빠르므로 Command Palette에서 settings라고 입력한다. 그리고 등장하는 관련 항목 중 **기본 설정: 설정 열기(JSON)** 이라는 항목을 선택한다.
+이어서 VSCode의 설정을 열어 Prettier의 설정을 한다. 이때, JSON 설정 파일에 직접 추가하는 것이 편하고 빠르므로 Command Palette에서 settings라고 입력한다. 그리고 등장하는 관련 항목 중 **기본 설정: 설정 열기\(JSON\)** 이라는 항목을 선택한다.
 
 > Command Palette 단축키: MacOS: ⇧⌘P / windowOS: ctrl+shift+p]
 

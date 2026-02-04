@@ -70,7 +70,7 @@ console.log(fruits);
 ## splice
 
 `splice`는 전달하는 인자 개수에 따라 특정 위치에 요소를 추가, 삭제, 교체할 수 있다.
-**`splice(시작 인덱스, 시작 인덱스부터 요소의 개수, 추가할 요소)`**
+**`splice\(시작 인덱스, 시작 인덱스부터 요소의 개수, 추가할 요소\)`**
 
 ```js
 let fruits = [‘apple’, ‘banana’, ‘melon’, ‘peach’, ‘blueberry’];

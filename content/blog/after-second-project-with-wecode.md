@@ -17,7 +17,7 @@ path: "/blog/after-second-project-with-wecode"
 
 ## 5Dragon Project Front-End
 - 넥슨(NEXON)의 온라인 레이싱 게임 카트라이더(Kart Rider)의 전적 검색 서비스인 **카트라이더 TMI** 를 클로닝하는 프로젝트
-- 프로젝트팀 구성원이 모두 '용'과 관련이 있어서 프로젝트명을 **오룡(5Dragon)** 이라 명명함.
+- 프로젝트팀 구성원이 모두 '용'과 관련이 있어서 프로젝트명을 **오룡\(5Dragon\)** 이라 명명함.
 - [카트라이더 TMI 공식 홈페이지 링크](https://tmi.nexon.com/kart)
 
 ## 개발 인원 및 기간

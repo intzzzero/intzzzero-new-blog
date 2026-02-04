@@ -48,7 +48,7 @@ class FeedText extends React.Component {
 export default FeedText;
 ```
 
-state에 지정한 값을 변경하고 싶을 때에는 **반드시 `setState()`를 이용하여 변경해야 한다.**
+state에 지정한 값을 변경하고 싶을 때에는 **반드시 `setState\(\)`를 이용하여 변경해야 한다.**
 
 그리고, state를 사용함에 있어서 또 한 가지 주의해야 할 점은, **state의 사용이 필수는 아니라는 것** 이다. 만약 현재 작업 중인 페이지가 정적인 페이지이며, 값이 변하더라도 렌더링은 필요하지 않을 경우에는 굳이 state를 쓰지 않아도 충분하다.
 

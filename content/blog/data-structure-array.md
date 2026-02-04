@@ -17,7 +17,7 @@ path: "/blog/data-structure-array"
 ## 자료구조의 분류
 ![data structure diagram](https://cdn.ttgtmedia.com/rms/onlineimages/whatis-data_structure.png)
 
-자료구조는 크게 두 갈래로 나눌 수가 있다. **단순 구조(Primitive Data Structure)** 와 **비단순 구조(None-Primitive Data Structure)** 가 바로 그것이다. 
+자료구조는 크게 두 갈래로 나눌 수가 있다. **단순 구조\(Primitive Data Structure\)** 와 **비단순 구조\(None-Primitive Data Structure\)** 가 바로 그것이다. 
 단순 구조에는 Integer, Float, String, Boolean 등의 기본 데이터 타입들이 존재하며, 비단순 구조에는 Array, List, Tuple, Dictionary, Set, File 등이 존재한다. 그리고, 비단순 구조에서도 List는 다시 두 종류로 나뉘는데, Stack과 Queue로 이루어진 Linear(선형 구조)와 Graph, Tree로 이루어진 Non-linear(비선형 구조)로 나누어진다.
 
 ## Array(List)

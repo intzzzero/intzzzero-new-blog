@@ -25,7 +25,7 @@ const position = member.position;
 const skills = member.skills;
 ```
 
-물론 이렇게 한다고 큰 일이 일어나지는 않지만, **구조 분해 할당(destructured assignment)** 를 활용하면 단 한 줄로 동일한 결과를 낼 수 있다.
+물론 이렇게 한다고 큰 일이 일어나지는 않지만, **구조 분해 할당\(destructured assignment\)** 를 활용하면 단 한 줄로 동일한 결과를 낼 수 있다.
 
 ```js
 const { name, position, skills } = member;

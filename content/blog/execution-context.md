@@ -57,20 +57,20 @@ LexicalEnvironment: {
 }
 ```
 
-렉시컬 환경 컴포넌트에는 위와 같이 **환경 레코드(Environment Record)** 와 **외부 렉시컬 환경 참조(Outer Lexical Environment Reference)** 가 있다.
+렉시컬 환경 컴포넌트에는 위와 같이 **환경 레코드\(Environment Record\)** 와 **외부 렉시컬 환경 참조\(Outer Lexical Environment Reference\)** 가 있다.
   - 환경 레코드: 유효 범위 내의 식별자와 값이 기록되어 있으며, 함수가 호출되면 1차적으로 이곳에서 식별자를 탐색한다.
   - 외부 렉시컬 환경 참조: 유효 범위 너머의 식별자와 값이 기록되어 있는 곳으로, 환경 레코드에서 해당 식별자를 찾을 수 없을 때 외부 렉시컬 환경 참조를 탐색하게 된다.
-최상위의 렉시컬 환경은 **전역 환경(Global Environment)** 과 바인딩되어 있으며, 이곳에서의 외부 렉시컬 환경 참조는 `null`이다.
-**결국 호이스팅(Hoisting)은, 자바스크립트의 식별자들이 해당 스코프의 렉시컬 환경에 등록된 결과라고 볼 수 있다.**
+최상위의 렉시컬 환경은 **전역 환경\(Global Environment\)** 과 바인딩되어 있으며, 이곳에서의 외부 렉시컬 환경 참조는 `null`이다.
+**결국 호이스팅\(Hoisting\)은, 자바스크립트의 식별자들이 해당 스코프의 렉시컬 환경에 등록된 결과라고 볼 수 있다.**
 
 > 중첩된 내부 함수가 외부 함수의 프로퍼티를 참조함으로써 스코프에 계속 존재하게 하는 ['클로저'](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Closures)는 외부 렉시컬 환경 참조를 십분 활용하는 좋은 예라고 할 수 있다.
 
 ## 콜 스택(Call Stack)
-> 후입선출(LIFO, Last In First Out) 방식으로 아래부터 데이터를 쌓아 올려 가장 마지막에 추가된 데이터부터 내보내는 자료구조를 **스택(Stack)** 이라고 한다.
+> 후입선출(LIFO, Last In First Out) 방식으로 아래부터 데이터를 쌓아 올려 가장 마지막에 추가된 데이터부터 내보내는 자료구조를 **스택\(Stack\)** 이라고 한다.
 > 이때, 데이터를 쌓는 행위를 **push** 라고 하고, 스택의 가장 윗부분에서 데이터를 꺼내는 행위를 **pop** 이라고 한다.
 
 - 실행 컨텍스트(Execution Context)는 프로그램 실행 중 스택에 push되어 실행이 된다. 이때, 전역 코드(Global Execution Context)는 브라우저의 시작과 동시에 실행되어 브라우저를 종료할 때까지 스택의 가장 아래에 위치한다.
-- 함수가 호출되면, 해당 실행 컨텍스트가 스택에 push 되어 실행되며, 해당 함수의 작업이 끝나면 호출했던 부분으로 제어권이 돌아오면서 스택에서 pop 된다. 이처럼 함수가 호출(Call)될 때마다 스택에 쌓인다 하여 **콜 스택(Call Stack)** 이라고 부른다.
+- 함수가 호출되면, 해당 실행 컨텍스트가 스택에 push 되어 실행되며, 해당 함수의 작업이 끝나면 호출했던 부분으로 제어권이 돌아오면서 스택에서 pop 된다. 이처럼 함수가 호출(Call)될 때마다 스택에 쌓인다 하여 **콜 스택\(Call Stack\)** 이라고 부른다.
 
 **참고:**
 - [자바스크립트의 동작원리: 엔진, 런타임, 호출 스택 • Captain Pangyo](https://joshua1988.github.io/web-development/translation/javascript/how-js-works-inside-engine/)

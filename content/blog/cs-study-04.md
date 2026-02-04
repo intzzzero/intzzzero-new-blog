@@ -132,11 +132,11 @@ reduce(lambda dic, ch: dic.update({ch : dic.get(ch, 0)+1}) or dic, li, {})
 - 일반적인 함수(function)은 하나의 input에 대해 하나의 output만을 가짐. 하지만 method, closure부터는 이 법칙이 깨짐.
 - (과거에)OOP를 쓸 수 없을 때 울며 겨자 먹기로 썼다.
 
-**지역변수(local variable)가 필요한 이유**
+**지역변수\(local variable\)가 필요한 이유**
 - 함수가 실행 도중에 결과 데이터를 저장하기 위해서
 - 상태정보: 특정한 데이터의 현재 상태
 
-**스택프레임(stack frame) 존재의 이유**
+**스택프레임\(stack frame\) 존재의 이유**
 - 어떤 함수가 실행될 때 필요한 상태정보를 저장하기 위해
 -> 상태정보는 지역변수가 지정
 

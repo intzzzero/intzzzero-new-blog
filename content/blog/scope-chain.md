@@ -10,7 +10,7 @@ path: "/blog/scope-chain"
 ![javascript](https://blog.martinwork.co.kr/images/javascript/javascript.png)
 
 ## 스코프 체인(scope chain)
-내부 스코프의 렉시컬 환경에서 필요한 식별자를 찾을 수 없을 때 외부 스코프의 렉시컬 환경을 점진적으로 탐색하게 되는데, 이처럼 렉시컬 환경을 매개로 내부와 외부의 스코프가 이어진 것을 **스코프 체인(scope chain)** 이라고 부른다.
+내부 스코프의 렉시컬 환경에서 필요한 식별자를 찾을 수 없을 때 외부 스코프의 렉시컬 환경을 점진적으로 탐색하게 되는데, 이처럼 렉시컬 환경을 매개로 내부와 외부의 스코프가 이어진 것을 **스코프 체인\(scope chain\)** 이라고 부른다.
 
 ```js
 var a = 'A';
