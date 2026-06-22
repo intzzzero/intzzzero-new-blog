@@ -1,0 +1,41 @@
+---
+import type { Post } from '../utils/posts';
+import { categoryUrl, formatDate, isUpdated, postUrl, tagUrl } from '../utils/posts';
+import { categoryName } from '../data/categories';
+import { site } from '../site.config';
+import { t } from '../i18n';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const url = postUrl(post);
+const i18n = t(site.language);
+const updated = isUpdated(post);
+const dateStr = formatDate(updated ? post.data.updatedAt! : post.data.date, site.language);
+const catName = categoryName(post.data.category);
+---
+
+<article class="post-list-item">
+  <h2 class="post-title">
+    <a href={url} class="post-title-link">{post.data.title}</a>
+  </h2>
+  <div class="post-list-meta-line">
+    <span class="meta-date-wrapper">
+      {updated && <span class="updated-badge">{i18n.updatedBadge}</span>}
+      {dateStr}
+    </span>
+    {post.data.category && (
+      <a href={categoryUrl(post.data.category)} class="category-badge">{catName}</a>
+    )}
+    {post.data.tags.length > 0 && (
+      <div class="tags-wrapper">
+        {post.data.tags.map((tag) => (
+          <a href={tagUrl(tag)} class="tag-badge">{tag}</a>
+        ))}
+      </div>
+    )}
+  </div>
+  {post.data.summary && <p class="post-excerpt">{post.data.summary}</p>}
+</article>

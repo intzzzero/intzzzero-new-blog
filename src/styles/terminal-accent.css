@@ -1,0 +1,45 @@
+/*
+ * Terminal accent layer over the aonote base theme.
+ * Keeps aonote's clean layout, readability, and light/dark support, but adds
+ * intzzzero's signature: a monospace-forward type stack, a green accent, and a
+ * Pacifico script logo.
+ */
+
+:root {
+  /* Monospace-forward stack. Latin glyphs render mono; Korean falls back to a
+     system gothic so body copy stays readable. */
+  --font-sans:
+    'SF Mono', 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Menlo, Monaco,
+    Consolas, 'Apple SD Gothic Neo', 'Pretendard', 'Noto Sans KR',
+    'Malgun Gothic', monospace;
+  --font-brand: 'Pacifico', cursive, var(--font-sans);
+
+  /* Terminal green accent. Light mode uses a darker green for contrast on the
+     near-white background. */
+  --terminal-green: #00882e;
+  --terminal-green-dim: #1a7a3a;
+  --color-primary: var(--terminal-green);
+  --color-accent: var(--terminal-green-dim);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Brighter green on the near-black background, closer to the original
+       terminal theme. */
+    --terminal-green: #2bd968;
+    --terminal-green-dim: #1f9f4d;
+    --color-primary: var(--terminal-green);
+    --color-link-dark: var(--terminal-green);
+  }
+}
+
+/* Content + navigation links in terminal green. */
+a {
+  color: var(--terminal-green);
+}
+
+/* Shell prompt before the site title — the terminal signature. */
+.site-title {
+  font-weight: 400;
+  letter-spacing: normal;
+}

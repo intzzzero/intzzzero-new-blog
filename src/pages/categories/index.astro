@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { categoryUrl, getBlogPosts, getOpenCategories, getPostsByCategory } from '../../utils/posts';
+
+const blogPosts = await getBlogPosts();
+// Only list categories that have opened (>= site.minPostsForCategory posts).
+const cats = getOpenCategories(blogPosts).map((c) => ({
+  ...c,
+  count: getPostsByCategory(blogPosts, c.slug).length,
+}));
+const canonicalUrl = new URL('/categories/', Astro.site).href;
+---
+
+<BaseLayout title="Categories" pageId="categories" canonicalUrl={canonicalUrl}>
+  <div class="page-header">
+    <h1>Categories</h1>
+  </div>
+  <p class="post-excerpt">
+    Posts grouped by topic. Each category collects everything written on that subject.
+  </p>
+  {cats.length === 0 ? (
+    <p class="empty-state">No categories yet.</p>
+  ) : (
+    <div class="category-grid">
+      {cats.map((c) => (
+        <a href={categoryUrl(c.slug)} class="category-card">
+          <h2 class="category-card-title">{c.name}</h2>
+          <p class="category-card-desc">{c.description}</p>
+          <span class="category-card-count">{c.count} posts</span>
+        </a>
+      ))}
+    </div>
+  )}
+</BaseLayout>

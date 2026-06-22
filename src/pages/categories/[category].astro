@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { siteHref } from '../../utils/paths';
+import { getBlogPosts, getOpenCategories, getPostsByCategory } from '../../utils/posts';
+import { getCategory } from '../../data/categories';
+import { categoryJsonLd } from '../../utils/jsonLd';
+
+export async function getStaticPaths() {
+  const blogPosts = await getBlogPosts();
+  // Only generate hubs for categories that have reached the post threshold.
+  // Empty/under-threshold categories 404 and stay out of the sitemap.
+  return getOpenCategories(blogPosts).map((category) => ({
+    params: { category: category.slug },
+    props: { posts: getPostsByCategory(blogPosts, category.slug) },
+  }));
+}
+
+const { category } = Astro.params;
+const { posts } = Astro.props;
+const cat = getCategory(category)!;
+const canonicalUrl = new URL(`/categories/${cat.slug}/`, Astro.site).href;
+---
+
+<BaseLayout
+  title={cat.name}
+  description={cat.description}
+  pageId="category"
+  canonicalUrl={canonicalUrl}
+  jsonLd={categoryJsonLd(cat, canonicalUrl, posts)}
+>
+  <div class="category-meta-info">
+    <h1 class="page-list-title">{cat.name}</h1>
+    <p class="tag-count">{cat.description}</p>
+    <a href={siteHref('/categories/')} class="button button-secondary button-small">← All categories</a>
+  </div>
+  <hr class="section-divider" />
+  <div class="post-list">
+    {posts.length === 0 ? (
+      <p class="empty-state">No posts in this category yet.</p>
+    ) : (
+      posts.map((post) => <PostCard post={post} />)
+    )}
+  </div>
+</BaseLayout>

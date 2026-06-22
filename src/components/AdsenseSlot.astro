@@ -1,0 +1,38 @@
+---
+/**
+ * AdSense ad slot. Renders nothing in production until `site.adsense.enabled`
+ * is true (set it after approval; see src/site.config.ts). In dev it shows a
+ * labelled placeholder so you can see where ads will appear.
+ */
+import { site } from '../site.config';
+
+interface Props {
+  slot: string;
+  format?: string;
+  className?: string;
+}
+
+const { slot, format = 'auto', className = '' } = Astro.props;
+const { enabled, client } = site.adsense;
+const showPlaceholder = !enabled && import.meta.env.DEV;
+---
+
+{enabled ? (
+  <div class={`ad-slot ${className}`.trim()}>
+    <ins
+      class="adsbygoogle"
+      style="display:block"
+      data-ad-client={client}
+      data-ad-slot={slot}
+      data-ad-format={format}
+      data-full-width-responsive="true"
+    ></ins>
+    <script is:inline>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+) : showPlaceholder ? (
+  <div class={`ad-slot ad-slot--placeholder ${className}`.trim()} aria-hidden="true">
+    Ad slot · {slot}
+  </div>
+) : null}
