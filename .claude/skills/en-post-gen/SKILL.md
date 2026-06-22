@@ -9,8 +9,13 @@ description: Generate an English-first developer blog post (how-to or comparison
 
 ## Trigger
 
+> **이 스킬은 새 포스트 생성의 기본 워크플로우다.** 새 블로그 글을 만드는 요청은 언어를 명시하지 않아도 전부 영어로 쓴다(루트 `CLAUDE.md`의 "기본 언어: 영어" 배너 참조).
+
+- "포스팅 작성해줘", "새 글 써줘", "블로그 글 써줘 \<주제\>" 등 **언어 미지정 포스팅 요청 전부**
 - "영어 포스팅 작성해줘", "영어 글 써줘 \<주제\>"
-- "write an English post about \<topic\>"
+- "write an English post about \<topic\>", "write a post about \<topic\>"
+
+**예외(이 스킬을 쓰지 않음)**: 기존 한국어 글 수정, 사용자가 한국어를 명시적으로 요청, `오늘의 AI뉴스 생성해줘`(별도 한국어 스킬 `ai-news-gen`).
 
 주제가 비교형(X vs Y)이면 비교 템플릿, 그 외엔 how-to 템플릿을 쓴다.
 
