@@ -4,6 +4,7 @@ import '../styles/terminal-accent.css';
 import { site } from '../site.config';
 import { siteHref } from '../utils/paths';
 import { t, type Locale } from '../i18n';
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
   title: string;
@@ -180,5 +181,6 @@ function navCurrent(path: string) {
         </div>
       </div>
     </footer>
+    <Analytics />
   </body>
 </html>
