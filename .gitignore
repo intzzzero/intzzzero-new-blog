@@ -68,5 +68,8 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
+# This repo uses npm (package-lock.json). Ignore competing pnpm lockfile.
+pnpm-lock.yaml
+
 .cursor/
 CLAUDE.md
