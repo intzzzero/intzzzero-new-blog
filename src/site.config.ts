@@ -28,11 +28,11 @@ export const site = {
     additionalNote: '',
   },
   /**
-   * Google AdSense. Keep `enabled: false` until the CSP in netlify.toml allows
-   * ad scripts and /public/ads.txt is in place. Then flip `enabled` to true.
+   * Google AdSense. The CSP in netlify.toml allows the ad scripts and
+   * /public/ads.txt is in place, so the loader (see BaseLayout.astro) is on.
    */
   adsense: {
-    enabled: false,
+    enabled: true,
     client: 'ca-pub-9941902100091939',
   },
   /**
