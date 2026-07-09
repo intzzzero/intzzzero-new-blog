@@ -19,7 +19,7 @@
 | 코드 리뷰를 '틀린 곳 찾기'로 했는데, 좋은 리뷰어는 먼저 의도를 묻더라 | Code Review Isn't Reading Code | what is code review | collaboration | published (`code-review-is-not-reading-code`) |
 | 추정치를 정확히 맞히려 애썼지만, 문제는 정확도가 아니라 불확실성 소통이었다 | Your Estimate Was Never the Problem | software estimation | engineering-craft | idea |
 | 기술 부채를 기술 문제로 봤는데, 대부분은 사람과 합의의 문제였다 | Technical Debt Is a People Problem | technical debt | engineering-craft | idea |
-| 시니어가 되는 건 더 많이 아는 게 아니라 더 적게 증명하려 드는 것이었다 | Seniority Is Knowing What to Ignore | what makes a senior engineer | career | idea |
+| 시니어가 되는 건 더 많이 아는 게 아니라 더 적게 증명하려 드는 것이었다 | Seniority Is Knowing What to Ignore | what makes a senior engineer | career | published (`seniority-is-knowing-what-to-ignore`) |
 | "노"라고 말하는 법을 못 배워서 로드맵이 아니라 대기열을 관리하고 있었다 | Saying No Is the Job | how to say no at work | career | idea |
 | 바쁨을 성실함으로 착각했고, 정작 중요한 일은 조용한 시간에만 됐다 | Busy Is Not the Same as Useful | deep work for developers | working-mindset | idea |
 | 도움을 주려던 조언이 부탁받지 않은 순간 대부분 소음이 되더라 | Unsolicited Advice Is Just Noise | giving feedback at work | collaboration | idea |
