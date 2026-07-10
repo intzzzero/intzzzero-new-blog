@@ -13,6 +13,8 @@ description: Plan and write an English first-person reflective essay on software
 - 아이디어 뱅크 → [`docs/essay-backlog.md`](../../../docs/essay-backlog.md)
 - 발행 점검 → [`workflow/essay-publishing-checklist.md`](../../../workflow/essay-publishing-checklist.md)
 
+> **필수 렌즈 (2026~): AI 활용 관점.** 이제 AI 코딩 도구(Claude Code·Codex·Grok·Gemini) 없는 개발은 사실상 불가능하다. **모든 에세이는 이 현실을 논증에 녹이고, 과거→현재→미래의 변화 궤적을 짚는다.** 도구 비교·가격표 회귀가 아니라, 성찰의 긴장을 AI 렌즈로 재해석하는 것이다. 상세는 [`essay-content-guide.md`](../../../docs/essay-content-guide.md) §4.5.
+
 ## Trigger
 
 > **언어를 명시하지 않은 새 글 요청은 전부 이 스킬로, 영어 에세이로 쓴다.** (루트 `CLAUDE.md` "기본 언어: 영어" 배너)
@@ -39,6 +41,7 @@ description: Plan and write an English first-person reflective essay on software
 
 - **한 문장 핵심 메시지**를 확정한다.
 - 섹션 개요를 짠다: 개인적 인정/관찰(도입) → 긴장 → 프레임(인용) → 실무적 전환 → 정직한 예외 → 열망의 마무리. 인용이 어디 착지할지 정한다.
+- **AI 렌즈 배치(필수)**: 이 긴장이 AI로 코딩하는 현실에서 어떻게 달라지는가를 한 섹션 이상에 녹이고, 과거→현재→미래 궤적을 어디서 짚을지 정한다(content guide §4.5). 억지 단락이 아니라 논지를 실제로 바꾸는 지점에.
 - **hybrid 제목** 후보 3개(검색 구절 ∩ 궁금증, ≤60자, 콜론 부제·"In the Age of AI" 금지).
 
 ## Phase 3 — Draft (초안)
