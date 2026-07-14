@@ -22,7 +22,7 @@
 | 기술 부채를 기술 문제로 봤는데, 대부분은 사람과 합의의 문제였다 | Technical Debt Is a People Problem | technical debt | engineering-craft | published (`technical-debt-is-a-people-problem`) |
 | 시니어가 되는 건 더 많이 아는 게 아니라 더 적게 증명하려 드는 것이었다 | Seniority Is Knowing What to Ignore | what makes a senior engineer | career | published (`seniority-is-knowing-what-to-ignore`) |
 | "노"라고 말하는 법을 못 배워서 로드맵이 아니라 대기열을 관리하고 있었다 | Saying No Is the Job | how to say no at work | career | idea |
-| 바쁨을 성실함으로 착각했고, 정작 중요한 일은 조용한 시간에만 됐다 | Busy Is Not the Same as Useful | deep work for developers | working-mindset | idea |
+| 바쁨을 성실함으로 착각했고, 정작 중요한 일은 조용한 시간에만 됐다 | Busy Is Not the Same as Useful | deep work for developers | working-mindset | published (`busy-is-not-the-same-as-useful`) |
 | 도움을 주려던 조언이 부탁받지 않은 순간 대부분 소음이 되더라 | Unsolicited Advice Is Just Noise | giving feedback at work | collaboration | idea |
 
 ## Parking lot (아직 긴장이 안 잡힌 것)
