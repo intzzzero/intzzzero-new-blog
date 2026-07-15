@@ -24,10 +24,10 @@
 | "노"라고 말하는 법을 못 배워서 로드맵이 아니라 대기열을 관리하고 있었다 | Saying No Is the Job | how to say no at work | career | idea |
 | 바쁨을 성실함으로 착각했고, 정작 중요한 일은 조용한 시간에만 됐다 | Busy Is Not the Same as Useful | deep work for developers | working-mindset | published (`busy-is-not-the-same-as-useful`) |
 | 도움을 주려던 조언이 부탁받지 않은 순간 대부분 소음이 되더라 | Unsolicited Advice Is Just Noise | giving feedback at work | collaboration | idea |
+| 베스트 프랙티스를 따르면 안전하다 믿었는데, 그건 논거가 떨어져 나간 남의 결론이었다 | Best Practices Are Someone Else's Context | best practices | engineering-craft | published (`best-practices-are-someone-elses-context`) |
 
 ## Parking lot (아직 긴장이 안 잡힌 것)
 
 - 온콜/장애 대응에서 배운 침착함에 대하여
-- "베스트 프랙티스"를 맥락 없이 따르다 데인 경험
-- 문서화를 미래의 나에게 보내는 편지로 다시 보기
+- 문서화를 미래의 나에게 보내는 편지로 다시 보기 (각도 후보: 에이전트가 CLAUDE.md를 매 세션 읽으면서 문서에 처음으로 성실한 독자가 생겼다 — 안 쓴 건 규율이 아니라 독자의 문제였다)
 - 페어 프로그래밍이 잘될 때와 최악일 때의 차이
