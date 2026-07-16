@@ -5,78 +5,69 @@ description: Generate a blog post summarizing the latest AI news.
 
 # AI News Generation Skill
 
-This skill is triggered when the user asks to "Generate today's AI news" (오늘의 AI뉴스 생성해줘).
-It automates the process of searching, filtering, and writing a high-quality blog post about recent AI developments.
+"오늘의 AI뉴스 생성해줘" 트리거. 최신 AI 소식을 검색·선별·작성해 블로그 포스트를 만든다.
 
 ## Workflow
 
-1.  **Search Phase**:
-    *   Search for "AI news", "Artificial Intelligence trends", "LLM new models", "AI tech news" from the **last 3 days**.
-    *   Use `search_web` to gather significant events. Focus on major releases, impactful research, or industry-shaking news (e.g., OpenAI, Google, Anthropic, open source models).
+1. **Search Phase**:
+   - 최근 3일치 "AI news", "LLM new models", "AI tech news" 등을 웹 검색.
+   - OpenAI, Google, Anthropic, 오픈소스 모델 등 주요 릴리스·연구·업계 이슈에 집중.
 
-2.  **Selection Phase**:
-    *   Select 3-5 most important news items.
-    *   Ensure they are fact-checked and from reliable sources.
+2. **Selection Phase**:
+   - 가장 중요한 3-5개를 선별하고 신뢰할 수 있는 출처로 팩트체크.
 
-3.  **Drafting Phase**:
-    *   Create a new markdown file in `content/blog/`.
-    *   **Filename**: `ai-news-YYYY-MM-DD.md` (e.g., `ai-news-2025-05-20.md`).
-    *   **Language**: **Korean (Hangul)**.
-    *   **Tone & Style**:
-        *   Casual, witty, no honorifics (Banmal/반말).
-        *   Professional but accessible (Software Engineer blogger persona).
-        *   **No emojis** in the main text (as per `GEMINI.md`).
-        *   Concise sentences.
-    *   **마크다운 특수문자 처리 (중요)**:
-        *   괄호 `()` 가 포함된 텍스트에 `**bold**` 또는 `*italic*` 적용 시, 반드시 괄호를 이스케이프하거나 HTML 태그 사용
-        *   ❌ 잘못된 예: `**텍스트(괄호)**`
-        *   ✅ 올바른 예: `**텍스트\(괄호\)**` 또는 `<strong>텍스트(괄호)</strong>`
+3. **Drafting Phase**:
+   - 새 마크다운 파일을 **`src/content/posts/`** 에 생성한다(Astro content collection).
+   - **파일명**: `ai-news-YYYY-MM-DD.md` → URL은 `/ai-news-YYYY-MM-DD/`.
+   - **언어**: 한국어. 반말·위트, 경어/이모지 없음, 두괄식.
+   - **마크다운 규칙**:
+     - 괄호+강조: `**텍스트(괄호)**` 금지 → `**텍스트\(괄호\)**` 또는 `<strong>텍스트(괄호)</strong>`.
+     - 본문 달러 기호는 `\$`로 이스케이프(remark-math가 `$...$`를 수식으로 해석해 가격 표기가 깨진다).
 
-4.  **Content Structure (Strict Adherence)**:
+4. **Frontmatter & Structure** (엄격 준수):
 
-    ```markdown
-    ---
-    title: "YYYY년 M월 D일 오늘의 AI 뉴스"
-    date: "YYYY-MM-DD"
-    update: "YYYY-MM-DD"
-    category: "AI"
-    ---
+   ```markdown
+   ---
+   title: "YYYY년 M월 D일 오늘의 AI 뉴스"
+   date: YYYY-MM-DD
+   updatedAt: YYYY-MM-DD
+   category: ai
+   summary: "오늘 AI 뉴스의 핵심 흐름을 140~160자로. 검색·AI 인용에 쓰이는 메타 설명."
+   ---
 
-    [Summary Paragraph]: Write a sharp, <200 character summary here about today's key themes. (Do-gal-sik)
+   [두괄식 요약: 200자 이내로 오늘의 핵심 테마를 먼저 던진다.]
 
-    ---
+   ---
 
-    ### [News Item 1 Title]
+   ### [뉴스 1 제목]
 
-    [Description of news item 1. detailed analysis.]
+   [상세 분석]
 
-    ### [News Item 2 Title]
+   ### [뉴스 2 제목]
 
-    [Description of news item 2. detailed analysis.]
+   [상세 분석]
 
-    ...
+   ...
 
-    ### [News Item N Title]
+   ---
 
-    [Description of news item N. detailed analysis.]
+   ### 예상되는 미래
 
-    ---
+   [통찰과 전망. 뉴스 사이의 점을 잇는다. 엔지니어 관점에서 대담하되 근거 있게.]
 
-    ### 예상되는 미래 (Expected Future)
+   ### 참고 자료
 
-    [Add your own insight/speculation here. Connect the dots between news items. Be bold and opinionated but grounded in engineering reality.]
+   - [출처 1](URL)
+   - [출처 2](URL)
+   ```
 
-    ### 참고 자료 (References)
-
-    - [Title of Source 1](URL)
-    - [Title of Source 2](URL)
-    ```
-
-5.  **Constraints**:
-    *   **Length**: The content MUST be **at least 3000 characters** long (excluding metadata).
-    *   **Category**: MUST be "AI".
-    *   **Validation**: Ensure the file parses correctly as frontmatter markdown.
+5. **Constraints**:
+   - **길이**: 본문 최소 3000자(메타데이터 제외).
+   - **category**: 반드시 `ai`(slug). `src/data/categories.ts`의 16개 slug 중 하나여야 한다.
+   - **summary**: 140~160자 메타 설명.
+   - **검증**: `npm run build` 가 통과해야 한다(astro check 포함). 빌드되면 `/ai-news-YYYY-MM-DD/`로 발행된다.
+   - 더 자세한 작성 원칙은 `docs/seo-geo-content-guide.md`와 `workflow/publishing-checklist.md`를 따른다.
 
 ## Example Trigger
 User: "오늘의 AI뉴스 생성해줘"
-Agent action: Follow the workflow above to generate a new file.
+Agent action: 위 워크플로우대로 `src/content/posts/ai-news-YYYY-MM-DD.md`를 생성한다.
